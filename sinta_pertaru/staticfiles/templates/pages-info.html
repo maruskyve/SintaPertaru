@@ -1,0 +1,398 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinta Pertaru - Info</title>
+
+    <!-- Favicon -->
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+</head>
+<body class="  ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <div class="iq-sidebar sidebar-default" style="background-color: #050505;">
+        <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
+            <a href="{% url 'view_dashboard' %}" class="header-logo">
+                <img src="{% static 'assets/images/logo.png' %}" class="img-fluid rounded-normal light-logo" alt="logo">
+                <img src="{% static 'assets/images/logo-dark.png' %}"
+                     class="img-fluid rounded-normal d-none sidebar-light-img"
+                     alt="logo">
+                <span>SintaPertaru</span>
+            </a>
+            <div class="side-menu-bt-sidebar-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="data-scrollbar" data-scroll="1">
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="side-menu">
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_dashboard' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Layanan</span>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="#app1" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Pertanahan</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app1" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_err404' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </i><span class="">Segera Hadir</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="#app6" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Tata Ruang</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app6" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_gis_service' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Layanan GIS</span>
+                                </a>
+                            </li>
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_ls' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Kesesuaian Lahan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_guest_book' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </i><span class="ml-2">Buku Tamu</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Personal</span>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_user_profile' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
+                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i><span class="ml-2">Profilku</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Lain - Lain</span>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_help' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Bantuan</span>
+                        </a>
+                    </li>
+                    <li class="active sidebar-layout">
+                        <a href="{% url 'view_info' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="pt-5 pb-5"></div>
+        </div>
+    </div>
+    <div class="iq-top-navbar">
+        <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="side-menu-bt-sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary wrapper-menu" width="30" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary" width="30" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="search-toggle dropdown-toggle" id="notification-dropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                         class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                        </path>
+                                    </svg>
+                                    <span class="bg-primary"></span>
+                                </a>
+                                <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="notification-dropdown">
+                                    <div class="card shadow-none m-0 border-0">
+                                        <div class="p-3 card-header-border">
+                                            <h6 class="text-center">
+                                                Notifikasi
+                                            </h6>
+                                        </div>
+                                        <div class="card-body overflow-auto card-header-border p-0 card-body-list"
+                                             style="max-height: 500px;">
+                                            <ul class="dropdown-menu-1 overflow-auto list-style-1 mb-0">
+                                                <li class="dropdown-item-1 float-none p-3">
+                                                    <div class="list-item d-flex justify-content-start align-items-start">
+                                                        <div class="avatar">
+                                                            <div class="avatar-img bg-success avatar-20">
+                                                                  <span>
+                                                                      <svg width="30" xmlns="http://www.w3.org/2000/svg"
+                                                                           class="h-6 w-6" fill="none"
+                                                                           viewBox="0 0 24 24" stroke="currentColor"
+                                                                           stroke-width="2">
+                                                                          <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                      </svg>
+                                                                  </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-style-detail ml-2 mr-2">
+                                                            <h6 class="font-weight-bold">Selamat Datang</h6>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    Selamat Datang {{ request.session.user_name }}
+                                                                </small>
+                                                            </p>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         class="text-secondary mr-1" width="15"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke="currentColor">
+                                                                        <path stroke-linecap="round"
+                                                                              stroke-linejoin="round" stroke-width="2"
+                                                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                    </svg>
+                                                                    Hari ini {{ request.session.login_start_time_hour }}</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-muted p-3">
+                                            <p class="mb-0 text-primary text-center font-weight-bold">Tampilkan
+                                                Semua</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon search-content">
+                                <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <svg class="svg-icon text-secondary" id="h-suns" height="25" width="25"
+                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </a>
+                                <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
+                                     aria-labelledby="dropdownSearch">
+                                    <form action="#" class="searchbox p-2">
+                                        <div class="form-group mb-0 position-relative">
+                                            <input type="text" class="text search-input font-size-12"
+                                                   placeholder="type here to search...">
+                                            <a href="#" class="search-link">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="" width="20" fill="none"
+                                                     viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          stroke-width="2"
+                                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="nav-item nav-icon dropdown-toggle pr-0 search-toggle"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img src="{% static 'assets/images/user/pp-blank.png' %}"
+                                         class="img-fluid avatar-rounded"
+                                         alt="user">
+                                    <span class="mb-0 ml-2 user-name">{{ request.session.user_name }}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item d-flex svg-icon">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-01-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <a href="{% url 'view_user_profile' %}">Profilku</a>
+                                    </li>
+                                    <li class="dropdown-item  d-flex svg-icon border-top">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-05-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                        </svg>
+                                        <a href="{% url 'service_logout' %}">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="content-page">
+        <div class="alert bg-info rounded-pill font-weight-bold">
+            <svg width="20" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                 stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span class="ml-2">Segera Hadir</span>
+        </div>
+    </div>
+</div>
+<!-- Wrapper End-->
+
+<!-- Own JavaScript -->
+<script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/global.js' %}"></script>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/customizer.js' %}"></script>
+
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+<!-- Flextree Javascript-->
+<script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+<script src="{% static 'assets/js/tree.js' %}"></script>
+
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+<!-- SweetAlert JavaScript -->
+<script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+<!-- Vectoe Map JavaScript -->
+<script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/chart-custom.js' %}"></script>
+<script src="{% static 'assets/js/charts/01.js' %}"></script>
+<script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+<!-- slider JavaScript -->
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+<!-- Emoji picker -->
+<script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+<!-- app JavaScript -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>

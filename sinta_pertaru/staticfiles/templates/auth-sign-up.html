@@ -1,0 +1,171 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinta Pertaru - Buat Akun</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/global.css' %}">
+</head>
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+
+<div class="wrapper">
+    <section class="login-content">
+        <div class="container h-100">
+            <div class="row align-items-center justify-content-center h-100">
+                <div class="col-md-5">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <div class="auth-logo">
+                                <img src="{% static 'assets/images/logo.png' %} "
+                                     class="img-fluid  rounded-normal  darkmode-logo"
+                                     alt="logo">
+                                <img src="{% static 'assets/images/logo-dark.png' %}"
+                                     class="img-fluid rounded-normal light-logo"
+                                     alt="logo">
+                            </div>
+                            <h3 class="mb-3 font-weight-bold text-center">Buat Akun</h3>
+                            <p class="text-center text-secondary mb-4">Selamat datang di Sinta Pertaru, silahkan buat
+                                akun terlebih dahulu</p>
+                            <!-- User Sign Up Form -->
+                            <form action="" method="post" id="userSignupForm">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="hidden" id="form" name="form" value="userSignUp">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="text-secondary" for="user_id">Nomor Pegawai</label>
+                                            <!-- User ID Input -->
+                                            <input class="form-control" id="user_id" name="user_id" type="text"
+                                                   placeholder="Masukkan Nomor Pegawai" maxlength="18" value="{{ request.user_id }}" required>
+                                            {% if rst_uid == '0' %}
+                                                <div class="alert bg-danger">{{ rmg_uid }}</div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="text-secondary" for="user_name">Nama Pengguna</label>
+                                            <!-- User Name Input -->
+                                            <input class="form-control" id="user_name" name="user_name" type="text"
+                                                   placeholder="Buat nama pengguna " maxlength="15" value="{{ request.user_name }}" required>
+                                            {% if rst_unm == '0' %}
+                                                <div class="alert bg-danger">{{ rmg_unm }}</div>
+                                                {#                                                <small class="text-danger">{{ request_msg }}</small>#}
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="text-secondary" for="user_password">Kata Sandi</label>
+                                            <div class="input-group mb-4">
+                                                <!-- User Password Input -->
+                                                <input type="password" class="form-control" id="user_password"
+                                                       name="user_password" placeholder="Buat Kata Sandi"
+                                                       maxlength="15" required>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text btn bg-dark rounded-right"
+                                                          id="passwordInputToggler">
+                                                        <i>
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12 mt-2">
+                                        <div class="form-check form-check-inline">
+                                            <div class="custom-control custom-checkbox custom-control-inline mb-3">
+                                                <input type="checkbox" class="custom-control-input m-0"
+                                                       id="tnpCheckbox">
+                                                <label class="custom-control-label pl-2" for="tnpCheckbox">
+                                                    Dengan ini Saya menyetujui
+                                                    <a href="{% url 'view_err404' %}">Syarat</a> dan
+                                                    <a href="{% url 'view_err404' %}">Ketentuan </a>
+                                                    layanan</label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <input id="user_phone_number" name="user_phone_number" type="hidden" value="">
+                                <input id="user_email" name="user_email" type="hidden" value="">
+                                <!-- User Sign Up Form Submit Button -->
+                                <button type="submit" class="btn btn-dark btn-block mt-2" id="submitButton" disabled>
+                                    Buat Akun
+                                </button>
+                                <div class="col-lg-12 mt-3">
+                                    <p class="mb-0 text-center">Sudah memiliki akun?
+                                        <a href="{% url 'view_login' %}">Masuk</a> sekarang</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- Wrapper End-->
+
+<!-- Own JavaScript -->
+<script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/global.js' %}"></script>
+<script src="{% static 'assets/js/view/auth-signup.js' %}"></script>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/customizer.js' %}"></script>
+
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+<!-- Flextree Javascript-->
+<script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+<script src="{% static 'assets/js/tree.js' %}"></script>
+
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+<!-- SweetAlert JavaScript -->
+<script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+<!-- Vectoe Map JavaScript -->
+<script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/chart-custom.js' %}"></script>
+<script src="{% static 'assets/js/charts/01.js' %}"></script>
+<script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+<!-- slider JavaScript -->
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+<!-- Emoji picker -->
+<script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+
+<!-- app JavaScript -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>

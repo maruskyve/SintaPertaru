@@ -1,0 +1,1006 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinta Pertaru - Layanan GIS</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/vendor/font-awesome-animation-1.1.1/package/css/font-awesome-animation.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+</head>
+<body class=" color-light ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <div class="iq-sidebar sidebar-default" style="background-color: #050505;">
+        <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
+            <a href="{% url 'view_dashboard' %}" class="header-logo">
+                <img src="{% static 'assets/images/logo.png' %}" class="img-fluid rounded-normal light-logo" alt="logo">
+                <img src="{% static 'assets/images/logo-dark.png' %}"
+                     class="img-fluid rounded-normal d-none sidebar-light-img"
+                     alt="logo">
+                <span>SintaPertaru</span>
+            </a>
+            <div class="side-menu-bt-sidebar-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="data-scrollbar" data-scroll="1">
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="side-menu">
+                    <li class="sidebar-layout">
+                        <a href="{% url 'view_dashboard' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Layanan</span>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="#app1" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Pertanahan</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app1" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_err404' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </i><span class="">Segera Hadir</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="#app6" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Tata Ruang</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app6" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class="active sidebar-layout">
+                                <a href="{% url 'view_gis_service' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Layanan GIS</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-layout">
+                                <a href="{% url 'view_ls' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Kesesuaian Lahan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_guest_book' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </i><span class="ml-2">Buku Tamu</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Personal</span>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="{% url 'view_user_profile' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
+                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i><span class="ml-2">Profilku</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Lain - Lain</span>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_help' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Bantuan</span>
+                        </a>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_info' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="pt-5 pb-5"></div>
+        </div>
+    </div>
+    <div class="iq-top-navbar">
+        <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="side-menu-bt-sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary wrapper-menu" width="30" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary" width="30" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="search-toggle dropdown-toggle" id="notification-dropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                         class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                        </path>
+                                    </svg>
+                                    <span class="bg-primary"></span>
+                                </a>
+                                <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="notification-dropdown">
+                                    <div class="card shadow-none m-0 border-0">
+                                        <div class="p-3 card-header-border">
+                                            <h6 class="text-center">
+                                                Notifikasi
+                                            </h6>
+                                        </div>
+                                        <div class="card-body overflow-auto card-header-border p-0 card-body-list"
+                                             style="max-height: 500px;">
+                                            <ul class="dropdown-menu-1 overflow-auto list-style-1 mb-0">
+                                                <li class="dropdown-item-1 float-none p-3">
+                                                    <div class="list-item d-flex justify-content-start align-items-start">
+                                                        <div class="avatar">
+                                                            <div class="avatar-img bg-success avatar-20">
+                                                                  <span>
+                                                                      <svg width="30" xmlns="http://www.w3.org/2000/svg"
+                                                                           class="h-6 w-6" fill="none"
+                                                                           viewBox="0 0 24 24" stroke="currentColor"
+                                                                           stroke-width="2">
+                                                                          <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                      </svg>
+                                                                  </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-style-detail ml-2 mr-2">
+                                                            <h6 class="font-weight-bold">Selamat Datang</h6>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    Selamat Datang {{ request.session.user_name }}
+                                                                </small>
+                                                            </p>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         class="text-secondary mr-1" width="15"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke="currentColor">
+                                                                        <path stroke-linecap="round"
+                                                                              stroke-linejoin="round" stroke-width="2"
+                                                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                    </svg>
+                                                                    Hari ini {{ request.session.login_start_time_hour }}</small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-muted p-3">
+                                            <p class="mb-0 text-primary text-center font-weight-bold">Tampilkan
+                                                Semua</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon search-content">
+                                <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <svg class="svg-icon text-secondary" id="h-suns" height="25" width="25"
+                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </a>
+                                <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
+                                     aria-labelledby="dropdownSearch">
+                                    <form action="#" class="searchbox p-2">
+                                        <div class="form-group mb-0 position-relative">
+                                            <input type="text" class="text search-input font-size-12"
+                                                   placeholder="type here to search...">
+                                            <a href="#" class="search-link">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="" width="20" fill="none"
+                                                     viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          stroke-width="2"
+                                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="nav-item nav-icon dropdown-toggle pr-0 search-toggle"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img src="{% static 'assets/images/user/pp-blank.png' %}"
+                                         class="img-fluid avatar-rounded"
+                                         alt="user">
+                                    <span class="mb-0 ml-2 user-name">{{ request.session.user_name }}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item d-flex svg-icon">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-01-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <a href="{% url 'view_user_profile' %}">Profilku</a>
+                                    </li>
+                                    <li class="dropdown-item  d-flex svg-icon border-top">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-05-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                        </svg>
+                                        <a id="logoutBtn">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="alert bg-info rounded-pill font-weight-bold">
+                        <svg width="20" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                             viewBox="0 0 24 24"
+                             stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                  d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <span class="ml-2">Segera Hadir</span>
+                    </div>
+                    <!-- GIS CARD -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h4 class="font-weight-bold mb-3">Layanan GIS</h4>
+                            <div id="chart-map-column-04"
+
+                                 class="custom-chart leaflet-container leaflet-touch leaflet-fade-anim leaflet-grab leaflet-touch-drag leaflet-touch-zoom"
+
+                                 tabindex="0" style="position: relative; outline: none;">
+
+                                <div class="leaflet-pane leaflet-map-pane"
+                                     style="transform: translate3d(29.0148px, 343px, 0px);">
+
+                                    <div class="leaflet-pane leaflet-tile-pane">
+
+                                        <div class="leaflet-layer " style="z-index: 1; opacity: 1;">
+
+                                            <div class="leaflet-tile-container leaflet-zoom-animated"
+
+                                                 style="z-index: 16; transform: translate3d(-651px, -393px, 0px) scale(4);"></div>
+
+
+                                            <div class="leaflet-tile-container leaflet-zoom-animated"
+
+                                                 style="z-index: 18; transform: translate3d(0px, 0px, 0px) scale(1);">
+                                                <img alt="" role="presentation"
+                                                     src="https://a.tile.openstreetmap.org/4/1/8.png"
+                                                     class="leaflet-tile leaflet-tile-loaded"
+
+                                                     style="width: 256px; height: 256px; transform: translate3d(-211px, 95px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://b.tile.openstreetmap.org/4/2/8.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(45px,
+                                                95px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://c.tile.openstreetmap.org/4/1/7.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(-211px,
+                                                -161px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://a.tile.openstreetmap.org/4/2/7.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(45px,
+                                                -161px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://b.tile.openstreetmap.org/4/1/9.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(-211px,
+                                                351px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://c.tile.openstreetmap.org/4/2/9.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(45px,
+                                                351px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://b.tile.openstreetmap.org/4/3/7.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(301px,
+                                                -161px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://c.tile.openstreetmap.org/4/2/6.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(45px,
+                                                -417px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://a.tile.openstreetmap.org/4/3/6.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(301px,
+                                                -417px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://c.tile.openstreetmap.org/4/3/8.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(301px,
+                                                95px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://b.tile.openstreetmap.org/4/1/6.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(-211px,
+                                                -417px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://b.tile.openstreetmap.org/4/4/6.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(557px,
+                                                -417px, 0px); opacity: 1;"><img
+                                                    alt="" role="presentation"
+                                                    src="https://c.tile.openstreetmap.org/4/4/7.png"
+                                                    class="leaflet-tile leaflet-tile-loaded"
+                                                    style="width: 256px; height: 256px; transform: translate3d(557px,
+                                                -161px, 0px); opacity: 1;">
+
+                                            </div>
+
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                    <div class="leaflet-pane leaflet-shadow-pane"></div>
+
+
+                                    <div class="leaflet-pane leaflet-overlay-pane">
+
+                                        <svg pointer-events="none" class="leaflet-zoom-animated" width="952"
+                                             height="462" viewBox="-108 -381 952 462"
+                                             style="transform: translate3d(-108px, -381px, 0px);">
+
+                                            <g>
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M587 -331L607 -330L612 -301L615 -293L612 -288L614 -276L584 -276L587 -269L584 -266L581 -269L581 -272L578 -267L575 -268L574 -288L579 -329L577 -331z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#c0cdf1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M340 -359L340 -281L317 -281L275 -296L276 -299L279 -301L278 -304L276 -304L276 -309L278 -311L278 -316L282 -321L277 -329L276 -346L280 -347L281 -345L283 -347L283 -359L324 -359z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M506 -352L555 -352L556 -349L553 -345L560 -345L560 -342L556 -337L555 -331L553 -331L554 -329L550 -325L551 -323L548 -322L549 -321L546 -319L547 -317L543 -311L545 -309L544 -303L511 -303L511 -311L506 -312L507 -336L504 -352z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M221 -383L277 -331L282 -321L279 -318L278 -311L276 -309L276 -304L278 -304L279 -301L278 -300L248 -297L246 -305L236 -314L235 -313L232 -317L229 -317L221 -322L210 -323L208 -325L209 -329L208 -332L205 -334L205 -337L194 -349L194 -358L192 -358L188 -362L188 -375L187 -372L182 -373L182 -377L177 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+                                                      d="M420 -383L420 -359L340 -359L340 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#1c367d" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+                                                      d="M727 -383L727 -380L720 -380L720 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#172d69" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M608 -276L614 -276L615 -272L646 -271L646 -268L649 -274L654 -272L656 -260L665 -243L664 -238L670 -225L669 -208L665 -201L664 -202L659 -200L657 -202L658 -204L655 -209L650 -213L647 -223L645 -221L640 -230L644 -235L641 -235L640 -233L638 -236L641 -249L632 -257L632 -259L629 -262L621 -264L621 -262L610 -259L609 -262L599 -268L585 -267L587 -269L584 -276z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M635 -331L633 -326L640 -320L651 -305L654 -303L658 -291L661 -290L656 -281L654 -272L649 -274L647 -268L646 -271L615 -272L612 -288L615 -293L612 -301L607 -330L630 -330z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#d5def6" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M585 -383L582 -377L580 -377L581 -375L578 -368L579 -366L574 -364L574 -360L569 -362L566 -359L567 -358L562 -363L562 -369L553 -376L555 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M612 -383L609 -383L609 -381L604 -377L602 -372L599 -375L597 -374L597 -372L593 -373L590 -370L584 -373L579 -370L580 -377L582 -377L585 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+                                                      d="M505 -383L504 -359L420 -359L420 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M628 -383L638 -383L641 -379L642 -372L648 -366L635 -355L629 -353L564 -353L566 -353L566 -359L568 -362L574 -360L574 -363L579 -366L578 -368L581 -372L584 -373L590 -370L593 -373L597 -372L597 -374L599 -375L602 -372L604 -377L609 -381L609 -383L612 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M516 -303L545 -302L544 -298L546 -297L546 -293L542 -288L540 -280L538 -280L538 -276L560 -276L559 -272L562 -265L559 -264L559 -262L562 -262L563 -264L565 -262L565 -260L561 -260L560 -257L566 -255L568 -252L567 -250L559 -254L559 -256L557 -256L556 -252L551 -254L548 -251L539 -260L536 -259L536 -261L531 -257L520 -260L513 -259L512 -260L515 -265L514 -267L517 -278L514 -287L511 -290L511 -303z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#1c367d" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M716 -372L716 -372zM720 -383L720 -380L727 -380L725 -373L718 -372L718 -376L716 -378L713 -378L713 -383L710 -383L713 -375L712 -374L706 -377L705 -380L703 -378L703 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#1c367d" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M574 -331L577 -331L579 -329L574 -288L575 -268L574 -267L570 -269L562 -265L559 -272L560 -276L538 -276L538 -280L540 -280L540 -285L546 -293L546 -297L544 -298L545 -309L543 -311L547 -317L546 -319L549 -321L548 -322L551 -323L550 -325L554 -329L553 -331z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M555 -383L553 -376L562 -369L562 -363L567 -358L566 -353L563 -352L560 -345L553 -345L556 -349L555 -352L504 -352L505 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#c0cdf1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M283 -383L283 -347L282 -345L280 -347L276 -346L277 -331L221 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#172d69" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#d5def6" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M359 -359L409 -359L408 -290L368 -290L369 -287L350 -287L350 -281L340 -281L340 -359z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M660 -352L718 -352L719 -347L708 -345L717 -343L719 -344L720 -340L717 -339L715 -335L711 -335L711 -326L703 -325L695 -319L694 -315L687 -315L674 -328L662 -328L662 -330L660 -332L659 -331L659 -333L642 -333L630 -330L622 -330L622 -334L624 -334L628 -338L631 -338L634 -341L637 -341L639 -345L646 -347L648 -346L652 -353z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#c0cdf1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+                                                      d="M646 -383L644 -380L641 -379L636 -383L628 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M442 -359L504 -359L507 -336L506 -312L498 -316L487 -315L485 -312L484 -314L478 -316L475 -313L474 -315L473 -314L469 -317L467 -315L467 -317L462 -319L460 -318L452 -320L452 -322L448 -322L444 -325L443 -352L409 -352L409 -359L420 -359z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#172d69" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M639 -332L659 -333L659 -331L660 -332L662 -328L674 -328L687 -315L683 -312L678 -303L676 -303L671 -298L668 -297L661 -290L658 -291L654 -303L642 -316L638 -323L633 -326L635 -331z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M579 -352L579 -354L652 -353L648 -346L646 -347L641 -344L639 -345L637 -341L634 -341L631 -338L628 -338L624 -334L622 -334L622 -330L553 -331L555 -331L556 -337L560 -342L562 -352L565 -352z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M423 -352L443 -352L443 -325L447 -322L452 -322L452 -320L460 -318L462 -319L467 -317L467 -315L469 -317L473 -314L474 -315L475 -313L478 -316L484 -314L485 -312L487 -315L498 -316L507 -311L511 -311L511 -290L514 -287L517 -278L514 -267L515 -265L512 -260L513 -259L506 -257L503 -258L503 -260L500 -259L501 -254L496 -248L489 -245L482 -246L484 -243L480 -242L480 -240L477 -238L471 -227L473 -228L471 -222L475 -211L471 -210L470 -212L464 -212L453 -218L448 -232L440 -241L436 -251L427 -260L413 -260L410 -252L406 -250L392 -258L388 -271L382 -274L368 -288L368 -290L408 -290L409 -352z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2e59d1" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+                                                      d="M340 -383L340 -359L283 -359L283 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#203f92" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M723 -373L725 -373L717 -360L717 -367L720 -372zM716 -372L716 -372zM703 -383L701 -380L702 -378L705 -378L705 -376L709 -375L714 -371L712 -367L713 -360L712 -358L709 -360L711 -358L716 -358L718 -352L629 -353L638 -357L648 -366L652 -362L655 -364L657 -362L667 -366L667 -369L671 -373L675 -382L679 -379L681 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2950bc" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M681 -383L679 -379L675 -382L671 -373L667 -369L667 -366L657 -362L655 -364L653 -362L650 -363L642 -372L641 -379L644 -380L646 -383z"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#2548a7" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#c0cdf1" fill-opacity="0.7"
+                                                      fill-rule="evenodd" d="M0 0"></path>
+
+
+                                                <path class="leaflet-interactive" stroke="white" stroke-opacity="1"
+                                                      stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+
+                                                      stroke-dasharray="3" fill="#172d69" fill-opacity="0.7"
+                                                      fill-rule="evenodd"
+
+                                                      d="M825 -113L816 -113L816 -118L834 -118L832 -113L827 -112z"></path>
+
+
+                                            </g>
+
+
+                                        </svg>
+
+
+                                    </div>
+
+
+                                    <div class="leaflet-pane leaflet-marker-pane"></div>
+
+
+                                    <div class="leaflet-pane leaflet-tooltip-pane"></div>
+
+
+                                    <div class="leaflet-pane leaflet-popup-pane"></div>
+
+
+                                    <div class="leaflet-proxy leaflet-zoom-animated"
+                                         style="transform: translate3d(834.485px, 1802.5px, 0px) scale(8);"></div>
+
+
+                                </div>
+
+
+                                <div class="leaflet-control-container">
+
+                                    <div class="leaflet-top leaflet-left">
+
+                                        <div class="leaflet-control-zoom leaflet-bar leaflet-control"><a
+                                                class="leaflet-control-zoom-in" href="#" title="Zoom in" role="button"
+                                                aria-label="Zoom in">+</a><a class="leaflet-control-zoom-out" href="#"
+                                                                             title="Zoom out" role="button"
+                                                                             aria-label="Zoom out">−</a></div>
+
+
+                                    </div>
+
+
+                                    <div class="leaflet-top leaflet-right"></div>
+
+
+                                    <div class="leaflet-bottom leaflet-left"></div>
+
+
+                                    <div class="leaflet-bottom leaflet-right">
+
+                                        <div class="leaflet-control-attribution leaflet-control"><a
+                                                href="https://leafletjs.com" title="A JS library for interactive
+                                            maps">Leaflet</a>
+                                            | © <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>
+                                            contributors
+
+                                        </div>
+
+
+                                    </div>
+
+
+                                </div>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Wrapper End-->
+
+    <!-- Django variables and necessary containers (place before all other JS defined) -->
+    <script>
+        let logout_url = "{% url 'service_logout' %}"
+    </script>
+
+    <!-- Own JavaScript -->
+    <script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'assets/js/global.js' %}"></script>
+
+    <!-- Backend Bundle JavaScript -->
+    <script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+    <!-- Chart Custom JavaScript -->
+    <script src="{% static 'assets/js/customizer.js' %}"></script>
+
+    <script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+    <!-- Flextree Javascript-->
+    <script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+    <script src="{% static 'assets/js/tree.js' %}"></script>
+
+    <!-- Table Treeview JavaScript -->
+    <script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+    <!-- SweetAlert JavaScript -->
+    <script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+    <!-- Vectoe Map JavaScript -->
+    <script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+    <!-- Chart Custom JavaScript -->
+    <script src="{% static 'assets/js/chart-custom.js' %}"></script>
+    <script src="{% static 'assets/js/charts/01.js' %}"></script>
+    <script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+    <!-- slider JavaScript -->
+    <script src="{% static 'assets/js/slider.js' %}"></script>
+
+    <!-- Emoji picker -->
+    <script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+
+    <!-- app JavaScript -->
+    <script src="{% static 'assets/js/app.js' %}"></script>
+</div>
+</body>
+</html>

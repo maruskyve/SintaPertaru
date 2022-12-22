@@ -1,0 +1,166 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinta Pertaru - Masuk</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/vendor/font-awesome-animation-1.1.1/package/css/font-awesome-animation.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/vendor/font-awesome-5/css/all.min.css' %}">
+
+    <!-- JS -->
+    <script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+</head>
+<body class=" ">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+
+<div class="wrapper">
+    <section class="login-content">
+        <div class="container h-100">
+            <div class="row align-items-center justify-content-center h-100">
+                <div class="col-md-5">
+                    <div class="card p-3">
+                        <div class="card-body">
+                            <button class="btn bg-white rounded-pill" onclick="location.href='{% url 'view_index' %}'"
+                                    data-toggle="tooltip" title="Kembali ke Beranda">
+                                <i>
+                                    <svg width="20" xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                         viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"/>
+                                    </svg>
+                                </i>
+                            </button>
+                            <div class="auth-logo">
+                                <img src="{% static 'assets/images/logo.png' %} "
+                                     class="img-fluid  rounded-normal darkmode-logo"
+                                     alt="logo">
+                                <img src="{% static 'assets/images/logo-dark.png' %}"
+                                     class="img-fluid rounded-normal light-logo"
+                                     alt="logo">
+                            </div>
+                            <h3 class="mb-3 font-weight-bold text-center">Masuk</h3>
+                            <p class="text-center text-secondary mb-4">Mohon masuk terlebih dahulu untuk menggunakan
+                                fasilitas Sinta Pertaru</p>
+                            <!-- User Login Form -->
+                            <form action="" method="post" id="loginForm">
+                                {% csrf_token %}
+                                {{ form }}
+                                <input type="hidden" name="form" value="user_login">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <label class="text-secondary" for="user_name">Nama Pengguna</label>
+                                            <!-- User Name Input -->
+                                            <input class="form-control ro" id="user_name" name="user_name" type="text"
+                                                   value="{{ request.POST.user_name }}"
+                                                   placeholder="Masukkan Nama Pengguna"
+                                                   maxlength="15" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-12">
+                                        <div class="form-group">
+                                            <div class="d-flex justify-content-between align-items-center">
+                                                <label class="text-secondary" for="user_password">Kata Sandi</label>
+                                            </div>
+                                            <div class="input-group mb-4">
+                                                <!-- User Password Input -->
+                                                <input type="password" class="form-control" id="user_password"
+                                                       name="user_password" placeholder="Masukkan Kata Sandi"
+                                                       maxlength="15" required>
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text btn bg-dark rounded-right"
+                                                          id="passwordInputToggler">
+                                                        <i>
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Login Form Submit Button -->
+                                <button type="submit" class="btn btn-dark btn-block mt-2">Masuk</button>
+                                <div class="col-lg-12 mt-3">
+                                    <p class="mb-0 text-center">Baru?
+                                        <a href="{% url 'view_signup' %}">Buat akun</a> sekarang juga</p>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+<!-- Django variables and necessary containers (place before all other JS defined) -->
+<script>
+    let rst = '{{ rst }}';
+    let rmg = '{{ rmg }}';
+    let success_1_icon = "{% static 'assets/images/success-1.gif' %}"
+    let failed_1_icon = "{% static 'assets/images/failed-1.gif' %}"
+</script>
+
+<!-- Own JavaScript -->
+<script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/global.js' %}"></script>
+<script src="{% static 'assets/js/view/auth-login.js' %}"></script>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/customizer.js' %}"></script>
+
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+<!-- Flextree Javascript-->
+<script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+<script src="{% static 'assets/js/tree.js' %}"></script>
+
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+<!-- SweetAlert JavaScript -->
+<script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+<!-- Vectoe Map JavaScript -->
+<script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/chart-custom.js' %}"></script>
+<script src="{% static 'assets/js/charts/01.js' %}"></script>
+<script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+<!-- slider JavaScript -->
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+<!-- Emoji picker -->
+<script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+
+<!-- app JavaScript -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>

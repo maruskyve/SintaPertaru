@@ -1,0 +1,211 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Sinta Pertaru</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="{% static 'assets/images/logo-transparent.ico' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/global.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/vendor/font-awesome-animation-1.1.1/package/css/font-awesome-animation.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/font-awesome-5/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/vendor/Semantic-UI-master/dist/semantic.min.css' %}">
+    <style>
+        body {
+            font-family: Poppins, serif;
+        }
+    </style>
+</head>
+<body class="">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <nav class="navbar navbar-expand-lg navbar-light basic-drop-shadow position-sticky fixed-top p-2"
+         style="background-color: #242424;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo03"
+                aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <img class="image ml-lg-5" src="{% static 'assets/images/logo-transparent.png' %}" width="50" alt=""
+             onclick="location.href='#'">
+        <a href="#"><span class="text-white font-weight-bold">Sinta Pertaru</span></a>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+            </ul>
+            <ul class="nav justify-content-end align-items-lg-center mr-xl-5 font-size-16">
+                <li class="nav-item mr-lg-2">
+                    <a class="nav-link text-white active" href="#">Beranda</a>
+                </li>
+                <li class="nav-item mr-lg-2">
+                    <a class="nav-link text-white" href="#" data-toggle="tooltip" title="Segera Hadir">Layanan</a>
+                </li>
+                <li class="nav-item mr-lg-2">
+                    <a class="nav-link text-white" href="#" data-toggle="tooltip" title="Segera Hadir">Pusat Bantuan</a>
+                </li>
+                <li class="nav-item">
+                    <button class="btn bg-white rounded-pill" onclick="location.href='{% url 'view_dashboard' %}'">
+                        Masuk
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <div class="iq-comingsoon bg-white">
+        <div class="container-fluid">
+            <div class="row justify-content-center">
+                <div class="col-sm-8 col-md-7 text-center">
+                    <img src="{% static 'assets/images/land-map.jpg' %}"
+                         class="img-fluid rounded-normal w-25 pt-5"
+                         alt="logo">
+                    <p class="font-size-32 font-weight-bold mt-4 mb-1">Selamat Datang di Sinta Dinas Pertanahan dan Tata
+                        Ruang</p>
+                    <p class="font-size-18 font-weight-bold mt-lg-5">Keunggulan Layanan</p>
+                    <p class="m">Nikmati berbagai kemudahan</p>
+                    <div class="row mt-lg-5">
+                        <div class="col-5">
+                            <div class="card align-items-lg-center">
+                                <img src="{% static 'assets/images/land-map.jpg' %}"
+                                     class="img-fluid w-25 rounded-normal"
+                                     alt="logo">
+                                <div class="card-body">
+                                    <p class="card-title font-size-14 font-weight-bold">Fleksibel</p>
+                                    <p class="card-text">
+                                        Content
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row justify-content-start p-4 basic-drop-shadow">
+                <div class="media">
+                    <img src="{% static 'assets/images/logo-district.png' %}" class="mr-3 avatar-110 img-fluid rounded"
+                         alt="#">
+                    <div class="media-body">
+                        <p class="card-title font-size-20 font-weight-bold">Dinas Pertanahan dan Tata Ruang Kabupaten
+                            Sleman</p>
+                        <p class="card-text font-size-14 mb-2">
+                            <i class="fa fa-building mr-2"></i>
+                            <b>Alamat:</b> Jalan Magelang Km. 10, Bangun Rejo, Tridadi, Kec. Sleman, Kabupaten Sleman,
+                            Daerah
+                            Istimewa Yogyakarta 55511
+                        </p>
+                        <p class="card-text font-size-14 mb-2">
+                            <i class="fa fa-phone mr-2"></i>
+                            <b>Telepon:</b> (0274) 868548
+                            <i class="fa fa-envelope ml-2 mr-2"></i>
+                            <b>E-mail:</b> pertaru@slemankab.go.id
+                            <i class="fa fa-fax ml-2 mr-2"></i><b>Fax:</b>
+                            (0274) 868548
+                        </p>
+                        <p class="card-text font-size-14 mb-2">
+                            <i class="fa fa-globe mr-2"></i>
+                            <b>Situs Web:</b>
+                            <a href="https://pertaru.slemankab.go.id">https://pertaru.slemankab.go.id</a>
+                        </p><br>
+                        <p class="card-text font-size-14 mb-2">
+                            <b>Media Sosial:</b>&nbsp;
+                            <a href="https://www.facebook.com/dptr.kabupatensleman.7" target="_blank"
+                               style="color: inherit;">
+                                <i class="ui icon facebook f mr-2"></i>
+                            </a>Facebook &nbsp;|
+                            <a href="https://www.instagram.com/infotataruang_sleman/" target="_blank"
+                               style="color: inherit;">
+                                <i class="ui icon instagram f mr-2"></i>
+                            </a>Instagram &nbsp;|
+                            <a href="https://www.youtube.com/channel/UC4PxzFGKjC9Z9JlIqdOVblQ" target="_blank"
+                               style="color: inherit;">
+                                <i class="ui icon youtube f mr-2"></i>
+                            </a>Youtube
+                        </p>
+                        <p class="card-text font-size-12 text-secondary">
+                            All Rights Reserved. Copyright&copy; 2022, Mkv
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        const containerId = '#content-container'
+        const index_template = '../templates/easy.html'
+        const index_dashboard_button = 'dashboardButton'
+        let old_active = '';
+
+        // window.onload = () => {
+        //     $(containerId).load(index_template)
+        //     setActive('#' + index_dashboard_button)
+        // }
+
+        function loadContent(template_path, caller_id) {
+            $('#loading').remove() // Remove loader component
+            $('body').append(`<div id="loading"><div id="loading-center"></div></div>`)  // Set loader component back
+            $(containerId).load(template_path)  // Load content page
+            setDisActive()
+            setActive(caller_id)
+        }
+
+        function setActive(caller_id) {
+            $(caller_id).parent().attr('class', 'active sidebar-layout')
+            old_active = caller_id
+        }
+
+        function setDisActive() {
+            $(old_active).parent().attr('class', 'sidebar-layout')
+        }
+    </script>
+</div>
+<!-- Wrapper End-->
+
+<!-- Own JavaScript -->
+<script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/global.js' %}"></script>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/customizer.js' %}"></script>
+
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+<!-- Flextree Javascript-->
+<script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+<script src="{% static 'assets/js/tree.js' %}"></script>
+
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+<!-- SweetAlert JavaScript -->
+<script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+<!-- Vectoe Map JavaScript -->
+<script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/chart-custom.js' %}"></script>
+<script src="{% static 'assets/js/charts/01.js' %}"></script>
+<script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+<!-- slider JavaScript -->
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+<!-- Emoji picker -->
+<script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+
+<!-- app JavaScript -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>

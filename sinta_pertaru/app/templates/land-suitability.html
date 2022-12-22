@@ -1,0 +1,1789 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{{ page_title }}</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
+
+    <link rel="stylesheet" href="{% static 'assets/css/backend-plugin.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/backend.css' %}">
+    <link rel="stylesheet"
+          href="{% static 'assets/vendor/font-awesome-animation-1.1.1/package/css/font-awesome-animation.css' %}">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+    <script src="{% static 'assets/vendor/sweetalert2-11.6.15/package/dist/sweetalert2.all.min.js' %}"></script>
+    <style>
+        {#        CHANGE #}
+        #testDataTable {
+            position: relative;
+            border-collapse: collapse;
+        }
+
+        #testDataTable th {
+            position: sticky;
+            top: 0;
+        }
+    </style>
+</head>
+<body class=" color-light " style="font-family: Poppins,serif">
+<!-- loader Start -->
+<div id="loading">
+    <div id="loading-center">
+    </div>
+</div>
+<!-- loader END -->
+<!-- Wrapper Start -->
+<div class="wrapper">
+    <div class="iq-sidebar sidebar-default" style="background-color: #050505;">
+        <div class="iq-sidebar-logo d-flex align-items-end justify-content-between">
+            <a href="{% url 'view_dashboard' %}" class="header-logo">
+                <img src="{% static 'assets/images/logo.png' %}" class="img-fluid rounded-normal light-logo" alt="logo">
+                <img src="{% static 'assets/images/logo-dark.png' %}"
+                     class="img-fluid rounded-normal d-none sidebar-light-img"
+                     alt="logo">
+                <span>SintaPertaru</span>
+            </a>
+            <div class="side-menu-bt-sidebar-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="text-light wrapper-menu" width="30" fill="none"
+                     viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                          d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+            </div>
+        </div>
+        <div class="data-scrollbar" data-scroll="1">
+            <nav class="iq-sidebar-menu">
+                <ul id="iq-sidebar-toggle" class="side-menu">
+                    <li class="sidebar-layout">
+                        <a href="{% url 'view_dashboard' %}" class="svg-icon rounded-pill">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Layanan</span>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="#app1" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Pertanahan</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app1" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_err404' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                    </i><span class="">Segera Hadir</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="#app6" class="collapsed svg-icon rounded-pill" data-toggle="collapse"
+                           aria-expanded="false">
+                            <i>
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Tata Ruang</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" class="svg-icon iq-arrow-right arrow-active"
+                                 width="15" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                      d="M9 5l7 7-7 7"></path>
+                            </svg>
+                        </a>
+                        <ul id="app6" class="submenu collapse" data-parent="#iq-sidebar-toggle">
+                            <li class=" sidebar-layout">
+                                <a href="{% url 'view_gis_service' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Layanan GIS</span>
+                                </a>
+                            </li>
+                            <li class="active sidebar-layout">
+                                <a href="{% url 'view_ls' %}" class="svg-icon rounded-pill">
+                                    <i class="">
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                             viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                            <path stroke-linecap="round" stroke-linejoin="round"
+                                                  d="M3 10h18M3 14h18m-9-4v8m-7 0h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z"></path>
+                                        </svg>
+                                    </i>
+                                    <span class="ml-2">Kesesuaian Lahan</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_guest_book' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path>
+                                </svg>
+                            </i><span class="ml-2">Buku Tamu</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Personal</span>
+                    </li>
+                    <li class="sidebar-layout">
+                        <a href="{% url 'view_user_profile' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
+                                     fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                          d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i><span class="ml-2">Profilku</span>
+                        </a>
+                    </li>
+                    <li class="px-3 pt-3 pb-2">
+                        <span class="text-uppercase small font-weight-bold">Lain - Lain</span>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_help' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Bantuan</span>
+                        </a>
+                    </li>
+                    <li class=" sidebar-layout">
+                        <a href="{% url 'view_info' %}" class="svg-icon rounded-pill">
+                            <i class="">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                     stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                          d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </i>
+                            <span class="ml-2">Info</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="pt-5 pb-5"></div>
+        </div>
+    </div>
+    <div class="iq-top-navbar">
+        <div class="iq-navbar-custom">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="side-menu-bt-sidebar">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary wrapper-menu" width="30" fill="none"
+                         viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                              d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </div>
+                <div class="d-flex align-items-center">
+                    <button class="navbar-toggler" type="button" data-toggle="collapse"
+                            data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                            aria-label="Toggle navigation">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="text-secondary" width="30" fill="none"
+                             viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                  d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav ml-auto navbar-list align-items-center">
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="search-toggle dropdown-toggle" id="notification-dropdown"
+                                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25"
+                                         class="h-6 w-6 text-secondary" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9">
+                                        </path>
+                                    </svg>
+                                    <span class="bg-primary"></span>
+                                </a>
+                                <div class="iq-sub-dropdown dropdown-menu" aria-labelledby="notification-dropdown">
+                                    <div class="card shadow-none m-0 border-0">
+                                        <div class="p-3 card-header-border">
+                                            <h6 class="text-center">
+                                                Notifikasi
+                                            </h6>
+                                        </div>
+                                        <div class="card-body overflow-auto card-header-border p-0 card-body-list"
+                                             style="max-height: 500px;">
+                                            <ul class="dropdown-menu-1 overflow-auto list-style-1 mb-0">
+                                                <li class="dropdown-item-1 float-none p-3">
+                                                    <div class="list-item d-flex justify-content-start align-items-start">
+                                                        <div class="avatar">
+                                                            <div class="avatar-img bg-success avatar-20">
+                                                                  <span>
+                                                                      <svg width="30" xmlns="http://www.w3.org/2000/svg"
+                                                                           class="h-6 w-6" fill="none"
+                                                                           viewBox="0 0 24 24" stroke="currentColor"
+                                                                           stroke-width="2">
+                                                                          <path stroke-linecap="round"
+                                                                                stroke-linejoin="round"
+                                                                                d="M14.828 14.828a4 4 0 01-5.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                      </svg>
+                                                                  </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="list-style-detail ml-2 mr-2">
+                                                            <h6 class="font-weight-bold">Selamat Datang</h6>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    Selamat Datang {{ request.session.user_name }}
+                                                                </small>
+                                                            </p>
+                                                            <p class="m-0">
+                                                                <small class="text-secondary">
+                                                                    <svg xmlns="http://www.w3.org/2000/svg"
+                                                                         class="text-secondary mr-1" width="15"
+                                                                         fill="none" viewBox="0 0 24 24"
+                                                                         stroke="currentColor">
+                                                                        <path stroke-linecap="round"
+                                                                              stroke-linejoin="round" stroke-width="2"
+                                                                              d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                                    </svg>
+                                                                    Hari ini {{ request.session.login_start_time_hour }}
+                                                                </small>
+                                                            </p>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="card-footer text-muted p-3">
+                                            <p class="mb-0 text-primary text-center font-weight-bold">Tampilkan
+                                                Semua</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon search-content">
+                                <a href="#" class="search-toggle rounded" id="dropdownSearch" data-toggle="dropdown"
+                                   aria-haspopup="true" aria-expanded="false">
+                                    <svg class="svg-icon text-secondary" id="h-suns" height="25" width="25"
+                                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                         stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                    </svg>
+                                </a>
+                                <div class="iq-search-bar iq-sub-dropdown dropdown-menu"
+                                     aria-labelledby="dropdownSearch">
+                                    <form action="#" class="searchbox p-2">
+                                        <div class="form-group mb-0 position-relative">
+                                            <label for="unkEl0"></label>
+                                            <input type="text" class="text search-input font-size-12" id="unkEl0"
+                                                   placeholder="type here to search...">
+                                            <a href="#" class="search-link">
+                                                <svg xmlns="http://www.w3.org/2000/svg" class="" width="20" fill="none"
+                                                     viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path stroke-linecap="round" stroke-linejoin="round"
+                                                          stroke-width="2"
+                                                          d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                                                </svg>
+                                            </a>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item nav-icon dropdown">
+                                <a href="#" class="nav-item nav-icon dropdown-toggle pr-0 search-toggle"
+                                   id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
+                                   aria-expanded="false">
+                                    <img src="{% static 'assets/images/user/pp-blank.png' %}"
+                                         class="img-fluid avatar-rounded"
+                                         alt="user">
+                                    <span class="mb-0 ml-2 user-name">{{ request.session.user_name }}</span>
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuButton">
+                                    <li class="dropdown-item d-flex svg-icon">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-01-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                        </svg>
+                                        <a href="{% url 'view_user_profile' %}">Profilku</a>
+                                    </li>
+                                    <li class="dropdown-item  d-flex svg-icon border-top">
+                                        <svg class="svg-icon mr-0 text-secondary" id="h-05-p" width="20"
+                                             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                  d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path>
+                                        </svg>
+                                        <a id="logoutBtn">Logout</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        </div>
+    </div>
+    <div class="content-page">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="header-title">
+                                <h4 class="card-title">Data Uji Kesesuaian Lahan</h4>
+                            </div>
+                            <div class="header-action">
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p>Data Tabel di bawah merupakan data uji yang dapat digunakan untuk mengetahui kesesuaian
+                                lahan berdasarkan beberapa parameter standar (seperti:
+                                <b>Curah Hujan</b>, <b>Kelerengan</b>, <b>Jenis Tanah</b>)</p>
+                            <div class="d-flex justify-content-start border-top-table pt-3 pl-0 container-fluid float-left">
+                                <div class="container-fluid">
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            <div class="input-group row col-sm mb-2">
+                                                <div class="input-group-append">
+                                                    <!-- Test Import Data Button -->
+                                                    <button class="btn btn-outline-dark rounded-left btn-sm"
+                                                            data-toggle="modal"
+                                                            data-target="#testImportDataModal">
+                                                        <i class="">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none"
+                                                                 viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                                            </svg>
+                                                        </i><span class="">Impor Data</span>
+                                                    </button>
+                                                    <!-- Test View Model Button -->
+                                                    <button class="btn btn-outline-dark btn-sm" type="button"
+                                                            data-toggle="modal" data-target="#viewModelModal"
+                                                            data-backdrop="static"
+                                                            data-keyboard="false">
+                                                        <i class="">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none"
+                                                                 viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
+                                                            </svg>
+                                                        </i><span class="">Lihat Model</span>
+                                                    </button>
+                                                    <!-- Test Remove Changes Button -->
+                                                    <button class="btn btn-outline-dark btn-sm"
+                                                            id="testTableRemoveChanges"
+                                                            type="button"
+                                                            onclick="location.href='{% url 'view_ls' %}'"
+                                                            data-toggle="tooltip"
+                                                            data-placement="top" title="Buang Perubahan">
+                                                        <i class="">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </button>
+                                                    <!-- Test Add Table Row Button -->
+                                                    <button class="btn btn-outline-dark btn-sm" id="testTableAddRow"
+                                                            type="button"
+                                                            data-toggle="tooltip"
+                                                            data-placement="top" title="Tambah Baris Tabel"
+                                                            onclick="">
+                                                        <i class="">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M12 4v16m8-8H4"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </button>
+                                                    <!-- Test Truncate Table Row Button -->
+                                                    <button class="btn btn-outline-dark btn-sm" id="testTableTruncate"
+                                                            type="button"
+                                                            data-toggle="tooltip"
+                                                            data-placement="top" title="Hapus Semua Baris Tabel">
+                                                        <i class="">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none"
+                                                                 viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linejoin="round"
+                                                                      d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </button>
+                                                    <!-- Test Truncate Suitability Table Row Button -->
+                                                    <button class="btn btn-outline-dark btn-sm"
+                                                            id="testTableClearSuitability"
+                                                            type="button" data-toggle="tooltip"
+                                                            data-placement="top" title="Kosongkan Semua Kesesuaian">
+                                                        <i>
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                                                                 stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M6 18L18 6M6 6l12 12"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </button>
+                                                    <!-- Test Save Change Button -->
+                                                    <button class="btn btn-outline-dark btn-sm"
+                                                            id="testTableSaveChanges"
+                                                            type="button"
+                                                            data-toggle="modal"
+                                                            data-target="#testSaveChangesModal">
+                                                        <i data-toggle="tooltip"
+                                                           data-placement="top" title="Simpan Perubahan">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                                                            </svg>
+                                                        </i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <div class="input-group row col-sm mb-2">
+                                                <div class="input-group-append">
+                                                    <!-- Test Process Button -->
+                                                    <button class="btn btn-success rounded-left btn-sm"
+                                                            id="testProcessBtn"
+                                                            type="button"
+                                                            data-toggle="tooltip"
+                                                            data-placement="top" title="Simpan & Proses Sekarang">
+                                                        <i class="fa fa-spinner faa-spin animated"
+                                                           id="processSpinnerIcon"
+                                                           aria-hidden="true" style="display: none;"></i>
+                                                        <i id="processButtonIcon">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6"
+                                                                 fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                                                                 stroke-width="2">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z"></path>
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                                            </svg>
+                                                        </i>
+                                                        <span>Proses</span>
+                                                    </button>
+                                                    <!-- Test View Summary Button -->
+                                                    <button class="btn btn-outline-dark btn-sm" type="button"
+                                                            data-toggle="modal" data-target="#testDataSummaryModal">
+                                                        <i>
+                                                            <svg width="20"
+                                                                 xmlns="http://www.w3.org/2000/svg"
+                                                                 class="h-6 w-6" fill="none"
+                                                                 viewBox="0 0 24 24"
+                                                                 stroke="currentColor" stroke-width="2">
+                                                                <path stroke-linecap="round"
+                                                                      stroke-linejoin="round"
+                                                                      d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                                            </svg>
+                                                        </i><span>Ringkasan</span>
+                                                    </button>
+                                                    <!-- Test Export Csv Button -->
+                                                    <button class="btn btn-outline-dark btn-sm" type="button"
+                                                            data-toggle="modal" data-target="#testDataExportModal">
+                                                        <i data-toggle="tooltip" data-placement="top"
+                                                           title="Ekspor dan Unduh"
+                                                           style="font-style: normal;">
+                                                            <svg width="20" xmlns="http://www.w3.org/2000/svg"
+                                                                 fill="none"
+                                                                 viewBox="0 0 24 24" stroke-width="1.5"
+                                                                 stroke="currentColor" class="w-6 h-6">
+                                                                <path stroke-linecap="round" stroke-linejoin="round"
+                                                                      d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path>
+                                                            </svg>
+                                                            Ekspor Data
+                                                        </i>
+                                                    </button>
+                                                    <!-- Test Process Result -->
+                                                    <button class="btn btn-outline-dark btn-sm"
+                                                            id="testProcessResultBtn"
+                                                            type="button" data-toggle="modal"
+                                                            data-target="#testPcsResModal"
+                                                            style="display: none;">
+                                                        <i class="fa fa-list-alt">
+                                                        </i><span> Hasil</span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Import Test Data Modal -->
+                                <div class="modal fade" id="testImportDataModal" tabindex="-1"
+                                     role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-md">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Impor Data Uji</h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item">
+
+                                                    </li>
+                                                </ul>
+                                                <div class="alert alert-light p-3" role="alert">
+                                                    <div class="iq-alert-text">Tekan 'Pilih File' di bawah untuk
+                                                        memilih
+                                                        file,
+                                                        <b>Perhatikan! file yang dapat diterima berupa file
+                                                            berekstensi (.csv)</b>
+                                                    </div>
+                                                </div>
+                                                <form action="" method="post" class="p-2" id="testDataImportForm"
+                                                      enctype="multipart/form-data">
+                                                    {% csrf_token %}
+                                                    {{ form.as_p }}
+                                                    <div class="form-group row">
+                                                        <div class="input-group col-sm-12">
+                                                            <input type="hidden" name="csv_import">
+                                                            <input type="hidden" id="testDataImportType"
+                                                                   name="land_data_type"
+                                                                   value="test">
+                                                            <div class="input-group-prepend">
+                                                                <span class="input-group-text">Impor</span>
+                                                            </div>
+                                                            <div class="custom-file">
+                                                                <input type="file" class="custom-file-input"
+                                                                       id="testDataImportFileInput" name="csv_file"
+                                                                       required>
+                                                                <label class="custom-file-label"
+                                                                       for="testDataImportFileInput">Pilih File</label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-12 align-self-center"
+                                                               for="testDataImportWithHeaderInput">
+                                                            <input id="testDataImportWithHeaderInput" name="with_header"
+                                                                   type="checkbox" checked>
+                                                            &nbsp;&nbsp;Dengan Header
+                                                        </label>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label class="control-label col-sm-7 align-self-center"
+                                                               for="testDataImportWithNumberInput">
+                                                            <input id="testDataImportWithNumberInput" name="with_number"
+                                                                   type="checkbox" checked>
+                                                            &nbsp;Dengan Nomor Baris
+                                                        </label>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button class="btn bg-red rounded-pill" type="button"
+                                                        data-dismiss="modal">Batal
+                                                </button>
+                                                <button class="btn btn-dark rounded-pill"
+                                                        id="testDataImportSubmitButton" type="button">
+                                                    <i class="fa fa-check"></i>
+                                                    Impor
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Test Save Changes Confirmation Modal -->
+                                <div class="modal fade" id="testSaveChangesModal" tabindex="-1"
+                                     role="dialog"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Konfirmasi Simpan Perubahan</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <p>Simpan Perubahan Data Uji sekarang?</p>
+                                                <button class="btn btn-secondary rounded-pill btn-sm"
+                                                        id="testSaveChangesSpinner"
+                                                        type="button" style="pointer-events: none; display: none">
+                                                    <i class="fa fa-spinner faa-spin animated"
+                                                       aria-hidden="true"></i>
+                                                    <span>Memproses...</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button"
+                                                        class="btn btn-danger rounded-pill"
+                                                        data-dismiss="modal">
+                                                    Batal
+                                                </button>
+                                                <button type="submit" class="btn btn-dark rounded-pill"
+                                                        form="testDataTableForm">Simpan
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Test Export Csv Modal -->
+                                <div class="modal fade" id="testDataExportModal" tabindex="-1"
+                                     role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm modal-dialog-centered">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Ekspor Kesesuaian Lahan</h5>
+                                                <button type="button" class="close"
+                                                        data-dismiss="modal" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul class="list-group list-group-flush mb-2">
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Jumlah data
+                                                        <span class="badge badge-dark badge-pill">{{ test_data_total }}</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Jumlah data berlabel
+                                                        <span class="badge badge-dark badge-pill">{{ test_labeled_data }}</span>
+                                                    </li>
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Jumlah data tidak berlabel
+                                                        <span class="badge badge-dark badge-pill">{{ test_unlabeled_data }}</span>
+                                                    </li>
+                                                </ul>
+                                                <div class="text-center">
+                                                    <button class="btn btn-success btn-xs rounded-pill"
+                                                            {% if test_labeled_data == test_data_total and test_data_total > 0 %}
+                                                            onclick="location.href='{% url 'view_export_csv' data_type='test' %}'"
+                                                            {% else %}
+                                                            data-target="tooltip" data-tooltip="top"
+                                                            title="Beberapa data belum di proses!"
+                                                            disabled
+                                                            {% endif %}>
+                                                        Ekspor dan Unduh
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Test View Process Result Modal -->
+                                <div class="modal fade" id="testPcsResModal" tabindex="-1" role="dialog"
+                                     aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-sm">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Hasil Proses</h5>
+                                                <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <ul class="list-group list-group-flush">
+                                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                        Status
+                                                        <span
+                                                                {% if rst == 1 %}
+                                                                    class="badge badge-dark badge-pill fa fa-check"
+                                                                {% else %}
+                                                                    class="badge badge-dark badge-pill fa fa-close"
+                                                                {% endif %}>
+                                                        </span>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- View Model Modal -->
+                                <div class="modal fade bd-example-modal-xl" id="viewModelModal" tabindex="-1"
+                                     role="dialog" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+                                        <div class="modal-content">
+                                            <div class="modal-header">
+                                                <h5 class="modal-title">Lihat Model</h5>
+                                                <button class="close" type="button" data-dismiss="modal"
+                                                        aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                            <div class="modal-body">
+                                                <div class="card">
+                                                    <div class="card-header d-flex justify-content-between">
+                                                        <div class="header-title">
+                                                            <h4 class="card-title">Data Model Kesesuaian Lahan</h4>
+                                                        </div>
+                                                        <div class="header-action">
+                                                        </div>
+                                                    </div>
+                                                    <div class="card-body">
+                                                        <p>Data Tabel di bawah merupakan data latih yang harus
+                                                            dikonfigurasi untuk dapat menggunakan fitur kesesuaian
+                                                            lahan, adapun data yang digunakan yaitu berdasarkan beberapa
+                                                            parameter standar (seperti: <b>Curah Hujan</b>, <b>Kelerengan</b>,
+                                                            <b>Jenis Tanah</b>, <b>Kesesuaian</b>)</p>
+                                                        <div class="d-flex justify-content-start align-items-center border-top-table pt-3 pl-0">
+                                                            <div class="container-fluid">
+                                                                <div class="row">
+                                                                    <div class="col-lg-6">
+                                                                        <div class="input-group mb-2">
+                                                                            <div class="input-group-append">
+                                                                                <!-- VM Import Data Button -->
+                                                                                <button class="btn btn-outline-dark rounded-left btn-sm"
+                                                                                        data-toggle="modal"
+                                                                                        data-placement="top"
+                                                                                        data-target="#vmTrainImportDataModal">
+                                                                                    <i class="">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path>
+                                                                                        </svg>
+                                                                                    </i><span class="">Impor Data</span>
+                                                                                </button>
+                                                                                <!-- VM Remove Changes Button -->
+                                                                                <button class="btn btn-outline-dark btn-sm"
+                                                                                        id="trainTableRemoveChanges"
+                                                                                        type="button"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="top"
+                                                                                        title="Buang Perubahan"
+                                                                                        onclick="location.href='{% url 'view_ls' %}'">
+                                                                                    <i class="">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6"></path>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                </button>
+                                                                                <!-- VM Add Data Row Button -->
+                                                                                <button class="btn btn-outline-dark btn-sm"
+                                                                                        id="trainTableAddRow"
+                                                                                        type="button"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="top"
+                                                                                        title="Tambah Baris Tabel">
+                                                                                    <i class="">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M12 4v16m8-8H4"></path>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                </button>
+                                                                                <!-- VM Train Truncate Table Row Button -->
+                                                                                <button class="btn btn-outline-dark btn-sm"
+                                                                                        id="trainTableTruncate"
+                                                                                        type="button"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="top"
+                                                                                        title="Hapus Semua Baris Tabel">
+                                                                                    <i class="">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                </button>
+                                                                                <!-- VM Truncate Suitability Table Row Button -->
+                                                                                <button class="btn btn-outline-dark btn-sm"
+                                                                                        id="trainTableClearSuitability"
+                                                                                        type="button"
+                                                                                        data-toggle="tooltip"
+                                                                                        data-placement="top"
+                                                                                        title="Kosongkan Semua Kesesuaian">
+                                                                                    <i>
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke-width="1.5"
+                                                                                             stroke="currentColor"
+                                                                                             class="w-6 h-6">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M6 18L18 6M6 6l12 12"></path>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                </button>
+                                                                                <!-- VM Save Change Button -->
+                                                                                <button class="btn btn-outline-dark btn-sm"
+                                                                                        id="trainTableSaveChanges"
+                                                                                        type="button"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#trainSaveChangesModal">
+                                                                                    <i data-toggle="tooltip"
+                                                                                       data-placement="top"
+                                                                                       title="Simpan Perubahan">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12"></path>
+                                                                                        </svg>
+                                                                                    </i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="col-lg-6">
+                                                                        <div class="input-group mb-2">
+                                                                            <div class="input-group-append">
+                                                                                <!-- VM View Summary Button -->
+                                                                                <button class="btn btn-outline-dark rounded-left btn-sm"
+                                                                                        type="button"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#vmTrainDataSummaryModal">
+                                                                                    <i class="">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             class="h-6 w-6" fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke="currentColor"
+                                                                                             stroke-width="2">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01"></path>
+                                                                                        </svg>
+                                                                                    </i><span>Ringkasan</span>
+                                                                                </button>
+                                                                                <!-- VM Export Csv Button -->
+                                                                                <button class="btn btn-outline-dark rounded-right btn-sm"
+                                                                                        type="button"
+                                                                                        data-toggle="modal"
+                                                                                        data-target="#trainDataExportModal">
+                                                                                    <i data-toggle="tooltip"
+                                                                                       data-placement="top"
+                                                                                       title="Ekspor dan Unduh"
+                                                                                       style="font-style: normal;">
+                                                                                        <svg width="20"
+                                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                                             fill="none"
+                                                                                             viewBox="0 0 24 24"
+                                                                                             stroke-width="1.5"
+                                                                                             stroke="currentColor"
+                                                                                             class="w-6 h-6">
+                                                                                            <path stroke-linecap="round"
+                                                                                                  stroke-linejoin="round"
+                                                                                                  d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m.75 12l3 3m0 0l3-3m-3 3v-6m-1.5-9H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z"></path>
+                                                                                        </svg>
+                                                                                        Ekspor Data
+                                                                                    </i>
+                                                                                </button>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="table-responsive">
+                                                        <form action="" method="post" id="trainDataTableForm">
+                                                            <!--------------------------------->
+                                                            <!-- VM Train Data Table (START) -->
+                                                            <!--------------------------------->
+                                                            <table id="trainDataTable"
+                                                                   class="table data-table table-striped table-bordered">
+                                                                <thead>
+                                                                <tr>
+                                                                    <th>Object ID
+                                                                        <input type="hidden" name="land_data">
+                                                                        <input id="trainTableRowFkUserId"
+                                                                               type="hidden"
+                                                                               name="land_data_fk_user_id"
+                                                                               value="{{ request.session.user_id }}">
+                                                                        <input id="trainTableType"
+                                                                               type="hidden"
+                                                                               name="land_data_type"
+                                                                               value="train">
+                                                                        <input id="trainTableProcess"
+                                                                               type="hidden"
+                                                                               name="process"
+                                                                               value="0">
+                                                                    </th>
+                                                                    <th>Curah Hujan</th>
+                                                                    <th>Kelerengan</th>
+                                                                    <th>Jenis Tanah</th>
+                                                                    <th>Kesesuaian</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                                </thead>
+                                                                <tbody>
+                                                                {% for row in train_data %}
+                                                                    <tr id="trainDataTableRow{{ forloop.counter0 }}">
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <label for="trainId"></label>
+                                                                                <input class="form-control border-color-left-gray"
+                                                                                       id="trainId"
+                                                                                       name="land_data_id"
+                                                                                       type="hidden"
+                                                                                       value="{{ row.land_data_id }}">
+
+                                                                                <label for="trainAccuracy"></label>
+                                                                                <input class="form-control border-color-left-gray"
+                                                                                       id="trainAccuracy"
+                                                                                       name="land_data_accuracy"
+                                                                                       type="hidden"
+                                                                                       value="{{ row.land_data_accuracy }}">
+
+                                                                                <label for="trainObjectId"></label>
+                                                                                <input class="form-control border-color-left-gray"
+                                                                                       id="trainObjectId"
+                                                                                       name="land_data_object_id"
+                                                                                       type="text"
+                                                                                       placeholder="Masukkan Object ID"
+                                                                                       value="{{ row.land_data_object_id }}"
+                                                                                       required>
+
+                                                                                <label for="trainObjectIdSel"></label>
+                                                                                <select class="form-control"
+                                                                                        id="trainObjectIdSel"
+                                                                                        style="display: none;">
+                                                                                    <option value="{{ row.land_data_object_id }}"
+                                                                                            selected>{{ row.land_data_object_id }}
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <label for="trainRainfall"></label>
+                                                                                <select class="form-control"
+                                                                                        id="trainRainfall"
+                                                                                        name="land_data_rainfall">
+                                                                                    <option value="{{ row.land_data_rainfall }}"
+                                                                                            selected>
+                                                                                        {{ row.land_data_rainfall }}
+                                                                                    </option>
+                                                                                    <option value="< 1.000">< 1.000
+                                                                                    </option>
+                                                                                    <option value="1.000 - 2.000">
+                                                                                        1.000 - 2.000
+                                                                                    </option>
+                                                                                    <option value="2.000 - 2.500">
+                                                                                        2.000 - 2.500
+                                                                                    </option>
+                                                                                    <option value="2.500 - 3.000">
+                                                                                        2.500 - 3.000
+                                                                                    </option>
+                                                                                    <option value="3.000 - 3.500">
+                                                                                        3.000 - 3.500
+                                                                                    </option>
+                                                                                    <option value="> 3.500">> 3.500
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <label for="trainSlopes"></label>
+                                                                                <select class="form-control"
+                                                                                        id="trainSlopes"
+                                                                                        name="land_data_slopes">
+                                                                                    <option value="{{ row.land_data_slopes }}"
+                                                                                            selected>
+                                                                                        {{ row.land_data_slopes }}
+                                                                                    </option>
+                                                                                    <option value="(0 - 3)%">
+                                                                                        (0 - 3)%
+                                                                                    </option>
+                                                                                    <option value="(3 - 8)%">
+                                                                                        (3 - 8)%
+                                                                                    </option>
+                                                                                    <option value="(8 - 15)%">
+                                                                                        (8 - 15)%
+                                                                                    </option>
+                                                                                    <option value="(15 - 25)%">
+                                                                                        (15 - 25)%
+                                                                                    </option>
+                                                                                    <option value="(25 - 45)%">
+                                                                                        (25 - 45)%
+                                                                                    </option>
+                                                                                    <option value="> 45%">> 45%
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <label for="trainSoilType"></label>
+                                                                                <select class="form-control"
+                                                                                        id="trainSoilType"
+                                                                                        name="land_data_soil_type">
+                                                                                    <option value="{{ row.land_data_soil_type }}"
+                                                                                            selected>
+                                                                                        {{ row.land_data_soil_type }}
+                                                                                    </option>
+                                                                                    <option value="Andic Eutropepts">
+                                                                                        Andic Eutropepts
+                                                                                    </option>
+                                                                                    <option value="Pemukiman">
+                                                                                        Pemukiman
+                                                                                    </option>
+                                                                                    <option value="Typic Eutropepts">
+                                                                                        Typic Eutropepts
+                                                                                    </option>
+                                                                                    <option value="Typic Tropaquepts">
+                                                                                        Typic Tropaquepts
+                                                                                    </option>
+                                                                                    <option value="Typic Troporthents">
+                                                                                        Typic Troporthents
+                                                                                    </option>
+                                                                                    <option value="Typic Ustorthents">
+                                                                                        Typic Ustorthents
+                                                                                    </option>
+                                                                                    <option value="Andic Dystropepts">
+                                                                                        Andic Dystropepts
+                                                                                    </option>
+                                                                                    <option value="Andic Hapludolls">
+                                                                                        Andic Hapludolls
+                                                                                    </option>
+                                                                                    <option value="Typic Fragiaquents">
+                                                                                        Typic Fragiaquents
+                                                                                    </option>
+                                                                                    <option value="Typic Hapluderts">
+                                                                                        Typic Hapluderts
+                                                                                    </option>
+                                                                                    <option value="Typic Hapludands">
+                                                                                        Typic Hapludands
+                                                                                    </option>
+                                                                                    <option value="Typic Fluvaquents">
+                                                                                        Typic Fluvaquents
+                                                                                    </option>
+                                                                                    <option value="Typic Tropofluvents">
+                                                                                        Typic Tropofluvents
+                                                                                    </option>
+                                                                                    <option value="Lithic Ustorthents">
+                                                                                        Lithic Ustorthents
+                                                                                    </option>
+                                                                                    <option value="Typic Endoaquents">
+                                                                                        Typic Endoaquents
+                                                                                    </option>
+                                                                                    <option value="Lithic Ustropepts">
+                                                                                        Lithic Ustropepts
+                                                                                    </option>
+                                                                                    <option value="singkapan batuan">
+                                                                                        singkapan batuan
+                                                                                    </option>
+                                                                                    <option value="Typic Ustropepts">
+                                                                                        Typic Ustropepts
+                                                                                    </option>
+                                                                                    <option value="Kawasan militer">
+                                                                                        Kawasan militer
+                                                                                    </option>
+                                                                                    <option value="Vertic Tropaquepts">
+                                                                                        Vertic Tropaquepts
+                                                                                    </option>
+                                                                                    <option value="Typic Haplusterts">
+                                                                                        Typic Haplusterts
+                                                                                    </option>
+                                                                                    <option value="Lahan kritis">
+                                                                                        Lahan
+                                                                                        kritis
+                                                                                    </option>
+                                                                                    <option value="Fluvaquentic Eutropepts">
+                                                                                        Fluvaquentic
+                                                                                        Eutropepts
+                                                                                    </option>
+                                                                                    <option value="Aeric Tropaquepts">
+                                                                                        Aeric Tropaquepts
+                                                                                    </option>
+                                                                                    <option value="Vertic Eutropepts">
+                                                                                        Vertic Eutropepts
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <div class="form-group">
+                                                                                <label for="trainSuitability"></label>
+                                                                                <select class="form-control"
+                                                                                        id="trainSuitability"
+                                                                                        name="land_data_suitability">
+                                                                                    <option value="{{ row.land_data_suitability }}"
+                                                                                            selected>
+                                                                                        {{ row.land_data_suitability }}
+                                                                                    </option>
+                                                                                    <option value="Kawasan Tanaman Semusim dan Permukiman">
+                                                                                        Kawasan Tanaman Semusim dan
+                                                                                        Permukiman
+                                                                                    </option>
+                                                                                    <option value="Kawasan Hutan Produksi Tetap/Kawasan Hutan Produksi Konversi/Budidaya Tanaman Tahunan">
+                                                                                        Kawasan Hutan Produksi
+                                                                                        Tetap/Kawasan Hutan Produksi
+                                                                                        Konversi/Budidaya Tanaman
+                                                                                        Tahunan
+                                                                                    </option>
+                                                                                    <option value="Kawasan Fungsi Penyangga/Hutan Produksi Terbatas">
+                                                                                        Kawasan Fungsi
+                                                                                        Penyangga/Hutan
+                                                                                        Produksi Terbatas
+                                                                                    </option>
+                                                                                    <option value="Kawasan Lindung, termasuk hutan lindung">
+                                                                                        Kawasan Lindung, termasuk
+                                                                                        hutan
+                                                                                        lindung
+                                                                                    </option>
+                                                                                </select>
+                                                                            </div>
+                                                                        </td>
+                                                                        <td>
+                                                                            <!-- Test Data Table Row Action -->
+                                                                            <div class="input-group">
+                                                                                <div class="form-group">
+                                                                                    <div class="input-group-append">
+                                                                                        <!-- Action - Delete Table Row -->
+                                                                                        <button class="btn btn-outline-danger rounded-pill btn-sm"
+                                                                                                type="button"
+                                                                                                onclick="removeElement('trainDataTableRow{{ forloop.counter0 }}');">
+                                                                                            <i class="">
+                                                                                                <svg width="20"
+                                                                                                     xmlns="http://www.w3.org/2000/svg"
+                                                                                                     class="h-6 w-6"
+                                                                                                     fill="none"
+                                                                                                     viewBox="0 0 24 24"
+                                                                                                     stroke="currentColor"
+                                                                                                     stroke-width="2">
+                                                                                                    <path stroke-linecap="round"
+                                                                                                          stroke-linejoin="round"
+                                                                                                          d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                                                                </svg>
+                                                                                            </i>
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </td>
+                                                                    </tr>
+                                                                {% endfor %}
+                                                                </tbody>
+                                                                <tfoot>
+                                                                <tr>
+                                                                    <th>Object ID</th>
+                                                                    <th>Curah Hujan</th>
+                                                                    <th>Kelerengan</th>
+                                                                    <th>Jenis Tanah</th>
+                                                                    <th class="text-right">Kesesuaian</th>
+                                                                    <th>Aksi</th>
+                                                                </tr>
+                                                                </tfoot>
+                                                            </table>
+                                                            <div class="alert alert-primary"
+                                                                 id="trainTableEmptyRowAlert"
+                                                                 role="alert" style="display: none;">
+                                                                <div class="iq-alert-text">
+                                                                    Data kosong, silahkan tambahkan data atau impor
+                                                                    terlebih dahulu
+                                                                </div>
+                                                            </div>
+                                                            <!------------------------------->
+                                                            <!-- VM Train Data Table (END) -->
+                                                            <!------------------------------->
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- VM Modals (OUTSIDE) -->
+                            <!-- VM Import Train Data Modal (OUTSIDE) -->
+                            <div class="modal fade" id="vmTrainImportDataModal"
+                                 tabindex="-1" role="dialog" aria-hidden="true"
+                                 data-backdrop="static">
+                                <div class="modal-dialog modal-dialog-centered modal-md">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Impor Data Model</h5>
+                                            <button class="close" type="button"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="alert alert-light p-3"
+                                                 role="alert">
+                                                <div class="iq-alert-text">Tekan 'Pilih
+                                                    File' di bawah untuk
+                                                    memilih
+                                                    file,
+                                                    <b>Perhatikan! file yang dapat
+                                                        diterima berupa file
+                                                        berekstensi
+                                                        (.csv)</b>
+                                                </div>
+                                            </div>
+                                            <form class="p-2" action="" method="post"
+                                                  id="vmTrainDataImportForm" enctype="multipart/form-data">
+                                                {% csrf_token %}
+                                                {{ form.as_p }}
+                                                <div class="form-group row">
+                                                    <div class="input-group col-sm-12">
+                                                        <input type="hidden" name="csv_import">
+                                                        <input type="hidden" id="trainDataImportType"
+                                                               name="land_data_type"
+                                                               value="train">
+                                                        <div class="input-group-prepend">
+                                                            <span class="input-group-text">Impor</span>
+                                                        </div>
+                                                        <div class="custom-file">
+                                                            <input type="file" class="custom-file-input"
+                                                                   id="vmTrainDataImportFileInput" name="csv_file"
+                                                                   required>
+                                                            <label class="custom-file-label"
+                                                                   for="testDataImportFileInput">Pilih File</label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-12 align-self-center"
+                                                           for="testDataImportWithHeaderInput">
+                                                        <input id="vmTrainDataImportWithHeaderInput"
+                                                               name="with_header"
+                                                               type="checkbox" checked>
+                                                        &nbsp;&nbsp;Dengan Header
+                                                    </label>
+                                                </div>
+                                                <div class="form-group row">
+                                                    <label class="control-label col-sm-7 align-self-center"
+                                                           for="testDataImportWithNumberInput">
+                                                        <input id="vmTrainDataImportWithNumberInput"
+                                                               name="with_number"
+                                                               type="checkbox" checked>
+                                                        &nbsp;Dengan Nomor Baris
+                                                    </label>
+                                                </div>
+                                            </form>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn bg-red rounded-pill"
+                                                    data-dismiss="modal">Batal
+                                            </button>
+                                            <button type="submit"
+                                                    class="btn btn-dark rounded-pill"
+                                                    id="vmTrainImportDataSubmitButton"
+                                                    form="vmTrainDataImportForm">
+                                                <i class="fa fa-check"></i>
+                                                Impor
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- VM Train Save Changes Confirmation Modal (OUTSIDE) -->
+                            <div class="modal fade" id="trainSaveChangesModal" tabindex="-1"
+                                 role="dialog"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Konfirmasi Simpan Perubahan</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <p>Simpan Perubahan Data Model sekarang?</p>
+                                            <button class="btn btn-secondary rounded-pill btn-sm"
+                                                    id="trainSaveChangesSpinner"
+                                                    type="button" style="pointer-events: none; display: none">
+                                                <i class="fa fa-spinner faa-spin animated"
+                                                   aria-hidden="true"></i>
+                                                <span>Memproses...</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button"
+                                                    class="btn btn-danger rounded-pill"
+                                                    data-dismiss="modal">
+                                                Batal
+                                            </button>
+                                            <button type="submit" class="btn btn-dark rounded-pill"
+                                                    form="trainDataTableForm">Ya
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- VM Train Data Table Summary (OUTSIDE) -->
+                            <div class="modal fade" id="vmTrainDataSummaryModal"
+                                 tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle"
+                                 aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-sm"
+                                     role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Ringkasan
+                                                Data Latih</h5>
+                                            <button type="button" class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center iq-bg-primary">
+                                                    Jumlah Baris
+                                                    <span class="badge badge-dark badge-pill">{{ train_data_total }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center iq-bg-success">
+                                                    Fitur Data
+                                                    <span class="badge badge-dark badge-pill">3</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Test Data Table Summary -->
+                            <div class="modal fade" id="testDataSummaryModal" tabindex="-1" role="dialog"
+                                 aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-sm" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">Ringkasan
+                                                Data Uji</h5>
+                                            <button type="button" class="close" data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="list-group list-group-flush">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center iq-bg-primary">
+                                                    Jumlah Baris
+                                                    <span class="badge badge-dark badge-pill">{{ test_data_total }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center iq-bg-success">
+                                                    Fitur Data
+                                                    <span class="badge badge-dark badge-pill">3</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- VM Export Data Modal (OUTSIDE) -->
+                            <div class="modal fade"
+                                 id="trainDataExportModal"
+                                 tabindex="-1"
+                                 role="dialog" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title">
+                                                Ekspor Data Model
+                                                Klasifikasi</h5>
+                                            <button type="button"
+                                                    class="close"
+                                                    data-dismiss="modal"
+                                                    aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <ul class="list-group list-group-flush mb-2">
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Jumlah data
+                                                    <span class="badge badge-dark badge-pill">{{ train_data_total }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Jumlah data
+                                                    berlabel
+                                                    <span class="badge badge-dark badge-pill">{{ train_labeled_data }}</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                                    Jumlah data
+                                                    tidak berlabel
+                                                    <span class="badge badge-dark badge-pill">{{ train_unlabeled_data }}</span>
+                                                </li>
+                                            </ul>
+                                            <div class="text-center">
+                                                <button class="btn btn-success btn-xs rounded-pill"
+                                                        onclick="location.href='{% url 'view_export_csv' data_type='train' %}'">
+                                                    Ekspor dan Unduh
+                                                    Data
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="table-responsive">
+                                <form action="" method="post" id="testDataTableForm">
+                                    <!----------------------------->
+                                    <!-- Test Data Table (START) -->
+                                    <!----------------------------->
+                                    <table id="testDataTable" class="table data-table table-striped table-bordered">
+                                        <thead>
+                                        <tr>
+                                            <th>Object ID
+                                                <input type="hidden" name="land_data">
+                                                <input type="hidden" id="testTableRowFkUserId"
+                                                       name="land_data_fk_user_id"
+                                                       value="{{ request.session.user_id }}">
+                                                <input id="testTableType"
+                                                       type="hidden"
+                                                       name="land_data_type"
+                                                       value="test">
+                                                <input id="testTableProcess"
+                                                       type="hidden"
+                                                       name="process"
+                                                       value="0">
+                                            </th>
+                                            <th>Curah Hujan</th>
+                                            <th>Kelerengan</th>
+                                            <th>Jenis Tanah</th>
+                                            <th>Kesesuaian</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% for row in test_data %}
+                                            <tr id="testDataTableRow{{ forloop.counter0 }}">
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="testId"></label>
+                                                        <input class="form-control border-color-left-gray"
+                                                               id="testId" name="land_data_id" type="hidden"
+                                                               value="{{ row.land_data_id }}">
+
+                                                        <label for="testAccuracy"></label>
+                                                        <input class="form-control border-color-left-gray"
+                                                               id="testAccuracy" name="land_data_accuracy" type="hidden"
+                                                               value="{{ row.land_data_accuracy }}">
+
+                                                        <label for="testObjectId"></label>
+                                                        <input class="form-control border-color-left-gray"
+                                                               id="testObjectId"
+                                                               name="land_data_object_id"
+                                                               type="text" placeholder="Masukkan Object ID"
+                                                               value="{{ row.land_data_object_id }}" required>
+
+                                                        <label for="testObjectIdSel"></label>
+                                                        <select class="form-control" id="testObjectIdSel"
+                                                                style="display: none;">
+                                                            <option value="{{ row.land_data_object_id }}"
+                                                                    selected>{{ row.land_data_object_id }}
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="testRainfall"></label>
+                                                        <select class="form-control" id="testRainfall"
+                                                                name="land_data_rainfall">
+                                                            <option value="{{ row.land_data_rainfall }}"
+                                                                    selected>{{ row.land_data_rainfall }}
+                                                            </option>
+                                                            <option value="< 1.000">< 1.000</option>
+                                                            <option value="1.000 - 2.000">1.000 - 2.000</option>
+                                                            <option value="2.000 - 2.500">2.000 - 2.500</option>
+                                                            <option value="2.500 - 3.000">2.500 - 3.000</option>
+                                                            <option value="3.000 - 3.500">3.000 - 3.500</option>
+                                                            <option value="> 3.500">> 3.500</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="testSlopes"></label>
+                                                        <select class="form-control" id="testSlopes"
+                                                                name="land_data_slopes">
+                                                            <option value="{{ row.land_data_slopes }}"
+                                                                    selected>{{ row.land_data_slopes }}
+                                                            </option>
+                                                            <option value="(0 - 3)%">(0 - 3)%</option>
+                                                            <option value="(3 - 8)%">(3 - 8)%</option>
+                                                            <option value="(8 - 15)%">(8 - 15)%</option>
+                                                            <option value="(15 - 25)%">(15 - 25)%</option>
+                                                            <option value="(25 - 45)%">(25 - 45)%</option>
+                                                            <option value="> 45%">> 45%</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="testSoilType"></label>
+                                                        <select class="form-control" id="testSoilType"
+                                                                name="land_data_soil_type">
+                                                            <option value="{{ row.land_data_soil_type }}"
+                                                                    selected>{{ row.land_data_soil_type }}
+                                                            </option>
+                                                            <option value="Andic Eutropepts">Andic Eutropepts</option>
+                                                            <option value="Pemukiman">Pemukiman</option>
+                                                            <option value="Typic Eutropepts">Typic Eutropepts</option>
+                                                            <option value="Typic Tropaquepts">Typic Tropaquepts</option>
+                                                            <option value="Typic Troporthents">Typic Troporthents
+                                                            </option>
+                                                            <option value="Typic Ustorthents">Typic Ustorthents</option>
+                                                            <option value="Andic Dystropepts">Andic Dystropepts</option>
+                                                            <option value="Andic Hapludolls">Andic Hapludolls</option>
+                                                            <option value="Typic Fragiaquents">Typic Fragiaquents
+                                                            </option>
+                                                            <option value="Typic Hapluderts">Typic Hapluderts</option>
+                                                            <option value="Typic Hapludands">Typic Hapludands</option>
+                                                            <option value="Typic Fluvaquents">Typic Fluvaquents</option>
+                                                            <option value="Typic Tropofluvents">Typic Tropofluvents
+                                                            </option>
+                                                            <option value="Lithic Ustorthents">Lithic Ustorthents
+                                                            </option>
+                                                            <option value="Typic Endoaquents">Typic Endoaquents</option>
+                                                            <option value="Lithic Ustropepts">Lithic Ustropepts</option>
+                                                            <option value="singkapan batuan">singkapan batuan</option>
+                                                            <option value="Typic Ustropepts">Typic Ustropepts</option>
+                                                            <option value="Kawasan militer">Kawasan militer</option>
+                                                            <option value="Vertic Tropaquepts">Vertic Tropaquepts
+                                                            </option>
+                                                            <option value="Typic Haplusterts">Typisc Haplusterts
+                                                            </option>
+                                                            <option value="Lahan kritis">Lahan kritis</option>
+                                                            <option value="Fluvaquentic Eutropepts">
+                                                                Fluvaquentic Eutropepts
+                                                            </option>
+                                                            <option value="Aeric Tropaquepts">Aeric Tropaquepts</option>
+                                                            <option value="Vertic Eutropepts">Vertic Eutropepts</option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div class="form-group">
+                                                        <label for="testSuitability"></label>
+                                                        <select class="form-control"
+                                                                id="testSuitability"
+                                                                name="land_data_suitability" style="max-width: 200px;">
+                                                            <option value="{{ row.land_data_suitability }}"
+                                                                    selected>
+                                                                {{ row.land_data_suitability }}
+                                                            </option>
+                                                            <option value="Kawasan Tanaman Semusim dan Permukiman">
+                                                                Kawasan Tanaman Semusim dan
+                                                                Permukiman
+                                                            </option>
+                                                            <option value="Kawasan Hutan Produksi Tetap/Kawasan Hutan Produksi Konversi/Budidaya Tanaman Tahunan">
+                                                                Kawasan Hutan Produksi
+                                                                Tetap/Kawasan Hutan Produksi
+                                                                Konversi/Budidaya Tanaman
+                                                                Tahunan
+                                                            </option>
+                                                            <option value="Kawasan Fungsi Penyangga/Hutan Produksi Terbatas">
+                                                                Kawasan Fungsi
+                                                                Penyangga/Hutan
+                                                                Produksi Terbatas
+                                                            </option>
+                                                            <option value="Kawasan Lindung, termasuk hutan lindung">
+                                                                Kawasan Lindung, termasuk
+                                                                hutan
+                                                                lindung
+                                                            </option>
+                                                            <option value="">
+                                                            </option>
+                                                        </select>
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <!-- Test Data Table Row Action -->
+                                                    <div class="input-group">
+                                                        <div class="form-group">
+                                                            <div class="input-group-append">
+                                                                <!-- Action - Delete Table Row -->
+                                                                <button class="btn btn-outline-danger rounded-pill btn-sm"
+                                                                        type="button"
+                                                                        onclick="removeElement('testDataTableRow{{ forloop.counter0 }}');">
+                                                                    <i class="">
+                                                                        <svg width="20"
+                                                                             xmlns="http://www.w3.org/2000/svg"
+                                                                             class="h-6 w-6" fill="none"
+                                                                             viewBox="0 0 24 24"
+                                                                             stroke="currentColor" stroke-width="2">
+                                                                            <path stroke-linecap="round"
+                                                                                  stroke-linejoin="round"
+                                                                                  d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                                                                        </svg>
+                                                                    </i>
+                                                                </button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        {% endfor %}
+                                        </tbody>
+                                        <tfoot>
+                                        <tr>
+                                            <th>Object ID</th>
+                                            <th>Curah Hujan</th>
+                                            <th>Kelerengan</th>
+                                            <th>Jenis Tanah</th>
+                                            <th class="text-right">Kesesuaian</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                        </tfoot>
+                                    </table>
+                                    <div class="alert alert-primary" id="testTableEmptyRowAlert"
+                                         role="alert" style="display: none;">
+                                        <div class="iq-alert-text">
+                                            Data kosong, silahkan tambahkan data atau impor terlebih dahulu
+                                        </div>
+                                    </div>
+                                    <!--------------------------->
+                                    <!-- Test Data Table (END) -->
+                                    <!--------------------------->
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Wrapper End-->
+
+<!-- Own JavaScript -->
+<script>
+    let rst = '{{ rst }}'
+    let rmg = '{{ rmg }}'
+    let logout_url = "{% url 'service_logout' %}"
+</script>
+
+<script src="{% static 'assets/js/jquery/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'assets/js/global.js' %}"></script>
+<script src="{% static 'assets/js/view/land-suitability.js' %}"></script>
+
+<!-- Backend Bundle JavaScript -->
+<script src="{% static 'assets/js/backend-bundle.min.js' %}"></script>
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/customizer.js' %}"></script>
+
+<script src="{% static 'assets/js/sidebar.js' %}"></script>
+
+<!-- Flextree Javascript-->
+<script src="{% static 'assets/js/flex-tree.min.js' %}"></script>
+<script src="{% static 'assets/js/tree.js' %}"></script>
+
+<!-- Table Treeview JavaScript -->
+<script src="{% static 'assets/js/table-treeview.js' %}"></script>
+
+<!-- SweetAlert JavaScript -->
+<script src="{% static 'assets/js/sweetalert.js' %}"></script>
+
+<!-- Vectoe Map JavaScript -->
+<script src="{% static 'assets/js/vector-map-custom.js' %}"></script>
+
+<!-- Chart Custom JavaScript -->
+<script src="{% static 'assets/js/chart-custom.js' %}"></script>
+<script src="{% static 'assets/js/charts/01.js' %}"></script>
+<script src="{% static 'assets/js/charts/02.js' %}"></script>
+
+<!-- slider JavaScript -->
+<script src="{% static 'assets/js/slider.js' %}"></script>
+
+<!-- Emoji picker -->
+<script src="{% static 'assets/vendor/emoji-picker-element/index.js' %}" type="module"></script>
+
+
+<!-- app JavaScript -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+</body>
+</html>
