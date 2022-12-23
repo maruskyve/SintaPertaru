@@ -83,20 +83,28 @@
                     </button>
                 </div>
                 <div class="col-md-8 shadow-sm rounded-pill mt-4 p-4">
-                    <div class="media mb-4" id="introductionSection">
-                        <img src="https://creazilla-store.fra1.digitaloceanspaces.com/vectors/76755/question-vector-md.jpeg"
-                             class="align-self-center mr-3 img-fluid rounded" alt="#" width="300">
-                        <div class="media-body">
+                    <div class="row mb-4" id="homeSection">
+                        <div class="col-md-5">
+                            <img src="https://creazilla-store.fra1.digitaloceanspaces.com/vectors/76755/question-vector-md.jpeg"
+                                 class="align-self-center mr-3 img-fluid rounded" alt="#" width="300">
+                        </div>
+                        <div class="col-md-7">
                             <p class="font-size-20 font-weight-bold mt-2 mb-2">Mengenal Sinta Pertaru</p>
-                            <p>Sinta Pertaru merupakan sebuah layanan digital berupa aplikasi <i>web</i> yang dapat
-                                digunakan untuk keperluan tugas Dinas Pertanahan dan Tata Ruang Kabupaten Sleman.</p>
+                            <p>Sinta Pertaru merupakan sebuah layanan digital berupa aplikasi <i>web</i> yang
+                                dapat
+                                digunakan untuk keperluan tugas Dinas Pertanahan dan Tata Ruang Kabupaten
+                                Sleman.</p>
                             <button class="btn btn-dark btn rounded-pill"
-                                    onclick="location.href='{% url 'view_login' %}'">Masuk Sekarang
+                                    onclick="location.href='{% url 'view_signup' %}'">Daftar Sekarang
+                            </button>
+                            <a class="ml-2 mr-2">atau</a>
+                            <button class="btn btn-dark btn rounded-pill"
+                                    onclick="location.href='{% url 'view_login' %}'">Masuk
                             </button>
                         </div>
                     </div>
-                    <div class="media mb-4" id="serviceSection">
-                        <div class="media-body">
+                    <div class="row mb-4" id="serviceSection">
+                        <div class="col-md-12">
                             <p class="font-size-20 font-weight-bold mt-2 mb-2">Layanan</p>
                             <p>Gunakan Berbagai Fasilitas dengan layanan yang mudah</p>
                             <div class="row">
@@ -125,8 +133,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="media mb-4" id="helpCenterSection">
-                        <div class="media-body">
+                    <div class="row mb-4" id="helpCenterSection">
+                        <div class="col-md-12">
                             <p class="font-size-20 font-weight-bold mt-2 mb-2">Pusat Bantuan</p>
                             <p>Hubungi pusat bantuan jika terdapat kendala</p>
                             <div class="input-group w-50">
@@ -138,7 +146,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="row mt-lg-5 justify-content-center p-4 basic-drop-shadow">
+                <div class="row justify-content-center p-4 basic-drop-shadow" style="margin-top: 100px;">
                     <div class="media">
                         <img src="{% static 'assets/images/logo-district.png' %}"
                              class="mr-3 avatar-110 img-fluid rounded"

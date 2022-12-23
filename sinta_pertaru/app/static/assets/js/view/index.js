@@ -1,7 +1,7 @@
 const homeNavbarBtn = '.homeNavbarBtn'
 const serviceNavbarBtn = '.serviceNavbarBtn'
 const helpCenterNavbarBtn = '.helpCenterNavbarBtn'
-const homeSection = '#introductionSection'
+const homeSection = '#homeSection'
 const serviceSection = '#serviceSection'
 const helpCenterSection = '#helpCenterSection'
 
