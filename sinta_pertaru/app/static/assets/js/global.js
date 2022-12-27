@@ -68,7 +68,7 @@ class CustomModal {
                             <p>${modal_body}</p>
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-outline-danger rounded-pill" data-dismiss="modal">
+                            <button type="button" class="btn btn-danger rounded-pill" data-dismiss="modal">
                                 Batal
                             </button>
                             <button type="button" class="btn btn-dark rounded-pill"

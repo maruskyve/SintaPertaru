@@ -391,6 +391,7 @@ class LSDataFormService(forms.LSDataForm):
     @staticmethod
     def lsDataAddFromCsvImport(request, user_fk):
         if request.method == "POST":
+            print(request.method)
             try:
                 print(f"LS - upload csv ({request.POST['land_data_type']})")
                 csv_file = request.FILES['csv_file']
@@ -426,7 +427,7 @@ class LSDataFormService(forms.LSDataForm):
                                     land_data_rainfall=fields[1],
                                     land_data_slopes=fields[2],
                                     land_data_soil_type=fields[3],
-                                    land_data_suitability=fields[4],
+                                    land_data_suitability=None,
                                     land_data_type=request.POST['land_data_type'],
                                     land_data_accuracy=float(0),
                                     land_data_fk_user_id=models.User.objects.get(user_id=user_fk)).save()

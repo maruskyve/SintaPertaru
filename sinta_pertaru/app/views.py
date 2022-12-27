@@ -4,6 +4,8 @@ from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.template import loader
 from django.urls import reverse
 from django.views.decorators.cache import never_cache
+from importlib.metadata import version
+from platform import python_version
 from . import models
 from . import services
 import datetime
@@ -22,10 +24,6 @@ up_tmpl_path = 'user-profile-edit.html'
 info_tmpl_path = 'pages-info.html'
 help_tmpl_path = 'pages-help.html'
 err404_tmpl_path = 'pages-error-404.html'
-
-# Dummy exists user id / employee id
-dummy_uid = ['1', '2', '3', '4', '5',
-             '6', '7', '8', '9', '10']
 
 
 @never_cache
@@ -57,7 +55,7 @@ def view_dashboard(request, login=0):
 @never_cache
 def view_login(request, login=1, signup=0):  # User Login Page
     template = loader.get_template(login_tmpl_path)
-    context = {'request': request, }
+    context = {'request': request}
 
     # Add success message if signup success
     if signup == 1:
@@ -154,8 +152,7 @@ def view_gis_service(request):
 @never_cache
 def view_ls(request):
     template = loader.get_template(ls_tmpl_path)
-    context = {'request': request,
-               'page_title': 'Sinta Pertaru - Analisis Kesesuaian Lahan'}
+    context = {'request': request}
 
     if not services.GeneralServices.service_check_login(request):
         return HttpResponseRedirect(reverse('view_login', kwargs={'login': 0}))
@@ -233,8 +230,7 @@ def view_export_csv(request, data_type=''):
 @never_cache
 def view_guest_book(request):
     template = loader.get_template(gb_tmpl_path)
-    context = {'request': request,
-               'page_title': 'Sinta Pertaru - Buku Tamu'}
+    context = {'request': request}
 
     if not services.GeneralServices.service_check_login(request):
         return HttpResponseRedirect(reverse('view_login', kwargs={'login': 0}))
@@ -266,9 +262,7 @@ def view_guest_book(request):
 @never_cache
 def view_user_profile(request):
     template = loader.get_template(up_tmpl_path)
-    context = {'request': request,
-               'page_title': 'Sinta Pertaru - Profilku',
-               'request_stat': 'none'}
+    context = {'request': request}
 
     if not services.GeneralServices.service_check_login(request):
         return HttpResponseRedirect(reverse('view_login', kwargs={'login': 0}))
@@ -337,6 +331,15 @@ def view_info(request):
 
     if request.method == "POST":
         pass
+
+    context.update({'app_name': 'Sinta Pertaru',
+                    'app_ver': '0.0.1',
+                    'app_release_date': '2022-08-02',
+                    'py_ver': python_version(),
+                    'dj_ver': version('Django'),
+                    'dev_email': 'marufnurrochman22@gmail.com',
+                    'dev_phone': '+6285526278060',
+                    'dev_website': 'maruskyve.github.io'})
 
     return HttpResponse(template.render(context))
 

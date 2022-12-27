@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ page_title }}</title>
+    <title>Sinta Pertaru - Profilku</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
@@ -151,7 +151,7 @@
                         <span class="text-uppercase small font-weight-bold">Personal</span>
                     </li>
                     <li class="active sidebar-layout">
-                        <a href="{% url 'view_user_profile' %}" class="svg-icon rounded-pill">
+                        <a class="svg-icon rounded-pill">
                             <i class="">
                                 <svg class="svg-icon" id="iq-user-1-1" xmlns="http://www.w3.org/2000/svg"
                                      fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -383,7 +383,7 @@
                                             <h4 class="card-title">Informasi Pribadi</h4>
                                         </div>
                                         <div class="header-action">
-                                            <button class="btn btn-outline-danger rounded-pill" type="button"
+                                            <button class="btn btn-danger rounded-pill" type="button"
                                                     onclick="location.href='{% url 'view_user_profile' %}'">
                                                 Batal
                                             </button>
@@ -513,7 +513,7 @@
                                             <h4 class="card-title">Ubah Kata Sandi</h4>
                                         </div>
                                         <div class="header-action">
-                                            <button class="btn btn-outline-danger rounded-pill" type="reset"
+                                            <button class="btn btn-danger rounded-pill" type="reset"
                                                     form="userUpdatePasswordForm">Batal
                                             </button>
                                             <button class="btn btn-dark rounded-pill" id="userChangePasswordButton"

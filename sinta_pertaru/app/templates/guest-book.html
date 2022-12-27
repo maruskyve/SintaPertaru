@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>{{ page_title }}</title>
+    <title>Sinta Pertaru - Buku Tamu</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="{% static 'assets/images/logo-transparent.png' %}"/>
@@ -137,7 +137,7 @@
                         </ul>
                     </li>
                     <li class="active sidebar-layout">
-                        <a href="{% url 'view_guest_book' %}" class="svg-icon rounded-pill">
+                        <a class="svg-icon rounded-pill">
                             <i class="">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
                                      stroke="currentColor" stroke-width="2">
@@ -270,7 +270,8 @@
                                                                               stroke-linejoin="round" stroke-width="2"
                                                                               d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                                                     </svg>
-                                                                    Hari ini {{ request.session.login_start_time_hour }}</small>
+                                                                    Hari ini {{ request.session.login_start_time_hour }}
+                                                                </small>
                                                             </p>
                                                         </div>
                                                     </div>
@@ -427,13 +428,13 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
+                                                        <button type="reset" class="btn bg-danger rounded-pill">
+                                                            Batal
+                                                        </button>
                                                         <button type="button" class="btn btn-dark rounded-pill"
                                                                 id="guestAddButton">
                                                             <i class="fa fa-plus faa-pulse faa-slow animated"></i>
                                                             Tambahkan
-                                                        </button>
-                                                        <button type="reset" class="btn bg-red rounded-pill">
-                                                            Batal
                                                         </button>
                                                     </div>
                                                 </form>
@@ -532,65 +533,66 @@
                                     </div>
                                     <div class="row">
                                         {% if today_guest_list|length > 0 %}
-                                        <!-- Loop over this element to display today guest list -->
-                                        {% for row in today_guest_list %}
-                                        <div class="col-sm-4">
-                                            <div class="card blur-shadow bg-white rounded-pill mt-3 p-2"
-                                                 style="">
-                                                <div class="card-body">
-                                                    <button type="button"
-                                                            class="btn mb-3 btn-dark btn-sm rounded-pill container-fluid text-left"
-                                                            style="pointer-events: none;">
-                                                        <span class="badge bg-white rounded-pill ml-2 mr-2">#{{ forloop.counter }}</span>
-                                                        {{ row.guest_name }}
-                                                    </button>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-5">
-                                                            <span>Keperluan:</span>
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <span>{{ row.guest_necessary }}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-5">
-                                                            <span>Jenis Tamu:</span>
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <span>{{ row.guest_type }}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mb-2">
-                                                        <div class="col-sm-5">
-                                                            <span>Di:</span>
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <span>{{ row.guest_instance_purpose }}</span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row">
-                                                        <div class="col-sm-5">
-                                                            <span>Kedatangan:</span>
-                                                        </div>
-                                                        <div class="col-sm-5">
-                                                            <span>{{ row.guest_arrival_date }}</span>
+                                            <!-- Loop over this element to display today guest list -->
+                                            {% for row in today_guest_list %}
+                                                <div class="col-sm-4">
+                                                    <div class="card blur-shadow bg-white rounded-pill mt-3 p-2"
+                                                         style="">
+                                                        <div class="card-body">
+                                                            <button type="button"
+                                                                    class="btn mb-3 btn-dark btn-sm rounded-pill container-fluid text-left"
+                                                                    style="pointer-events: none;">
+                                                                <span class="badge bg-white rounded-pill ml-2 mr-2">#{{ forloop.counter }}</span>
+                                                                {{ row.guest_name }}
+                                                            </button>
+                                                            <div class="row mb-2">
+                                                                <div class="col-sm-5">
+                                                                    <span>Keperluan:</span>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <span>{{ row.guest_necessary }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-2">
+                                                                <div class="col-sm-5">
+                                                                    <span>Jenis Tamu:</span>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <span>{{ row.guest_type }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row mb-2">
+                                                                <div class="col-sm-5">
+                                                                    <span>Di:</span>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <span>{{ row.guest_instance_purpose }}</span>
+                                                                </div>
+                                                            </div>
+                                                            <div class="row">
+                                                                <div class="col-sm-5">
+                                                                    <span>Kedatangan:</span>
+                                                                </div>
+                                                                <div class="col-sm-5">
+                                                                    <span>{{ row.guest_arrival_date }}</span>
+                                                                </div>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
+                                            {% endfor %}
                                         {% else %}
-                                        <div class="col-sm-12">
-                                            <div class="card basic-drop-shadow rounded-sm mt-3 p-2">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">Tamu Kosong</h4>
-                                                    <blockquote class="blockquote mb-0">
-                                                        <p class="font-size-14">Belum ada kunjungan tamu hari ini</p>
-                                                    </blockquote>
+                                            <div class="col-sm-12">
+                                                <div class="card basic-drop-shadow rounded-sm mt-3 p-2">
+                                                    <div class="card-body">
+                                                        <h4 class="card-title">Tamu Kosong</h4>
+                                                        <blockquote class="blockquote mb-0">
+                                                            <p class="font-size-14">Belum ada kunjungan tamu hari
+                                                                ini</p>
+                                                        </blockquote>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
                                         {% endif %}
                                     </div>
                                 </div>
@@ -644,11 +646,11 @@
                                                     <!-- Loop over this element to display guest history list -->
 
                                                     {% for row in guest_list_r %}
-                                                    <tr>
-                                                        <td>{{ row.guest_arrival_date }}</td>
-                                                        <td>{{ row.guest_instance_purpose }}</td>
-                                                        <td>{{ row.guest_type }}</td>
-                                                    </tr>
+                                                        <tr>
+                                                            <td>{{ row.guest_arrival_date }}</td>
+                                                            <td>{{ row.guest_instance_purpose }}</td>
+                                                            <td>{{ row.guest_type }}</td>
+                                                        </tr>
                                                     {% endfor %}
                                                     </tbody>
                                                 </table>

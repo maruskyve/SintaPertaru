@@ -357,19 +357,19 @@
                             </div>
                             <div class="row">
                                 <div class="col-3"><p>Nama Aplikasi</p></div>
-                                <div class="col-9"><p>: Sinta Pertaru</p></div>
+                                <div class="col-9"><p>: {{ app_name }}</p></div>
                             </div>
                             <div class="row">
-                                <div class="col-3"><p>Versi Aplikasi Web</p></div>
-                                <div class="col-9"><p>: 0.00.1</p></div>
-                            </div>
-                            <div class="row">
-                                <div class="col-3"><p>Mesin Web</p></div>
-                                <div class="col-9"><p>: Python (3.9.4) Django (4.1)</p></div>
+                                <div class="col-3"><p>Versi Aplikasi</p></div>
+                                <div class="col-9"><p>: {{ app_ver }}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-3"><p>Rilis</p></div>
-                                <div class="col-9"><p>: 2022-08-02</p></div>
+                                <div class="col-9"><p>: {{ app_release_date }}</p></div>
+                            </div>
+                            <div class="row">
+                                <div class="col-3"><p>Mesin Web</p></div>
+                                <div class="col-9"><p>: Python ({{ py_ver }}) Django ({{ dj_ver }})</p></div>
                             </div>
                         </a>
                         <a class="list-group-item">
@@ -378,15 +378,15 @@
                             </div>
                             <div class="row">
                                 <div class="col-3"><p>E-Mail</p></div>
-                                <div class="col-9"><p>: marufnurrochman22@gmail.com</p></div>
+                                <div class="col-9"><p>: {{ dev_email }}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-3"><p>Telepon</p></div>
-                                <div class="col-9"><p>: +625526278060</p></div>
+                                <div class="col-9"><p>: {{ dev_phone }}</p></div>
                             </div>
                             <div class="row">
                                 <div class="col-3"><p>Situs Web</p></div>
-                                <div class="col-9"><p>: maruskyve.github.io</p></div>
+                                <div class="col-9"><p>: {{ dev_website }}</p></div>
                             </div>
                         </a>
                     </div>
