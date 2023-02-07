@@ -5,7 +5,7 @@ from django.db import models
 class Employee(models.Model):
     employee_id = models.BigIntegerField(primary_key=True)
     employee_name = models.CharField(max_length=70)
-    employee_class = models.CharField(max_length=20)
+    employee_class = models.CharField(max_length=35)
     employee_gender = models.CharField(max_length=10, choices=[('M', 'male'), ('F', 'female')])
     employee_address = models.CharField(max_length=200)
     employee_phone_number = models.CharField(max_length=15)

@@ -136,17 +136,6 @@ class GeneralServices:
                                                                                         'land_data_suitability')
             )
 
-            #######
-            data = request.POST
-            # dd = pd.DataFrame({'land_data_id': data.getlist('land_data_id'),
-            #                    'land_data_object_id': data.getlist('land_data_object_id'),
-            #                    'land_data_rainfall': data.getlist('land_data_rainfall'),
-            #                    'land_data_slopes': data.getlist('land_data_slopes'),
-            #                    'land_data_soil_type': data.getlist('land_data_soil_type'),
-            #                    'land_data_suitability': data.getlist('land_data_suitability')
-            #                    })
-            # print(dd)
-
             # Replacing dfs header
             for _df in [df_train, df_test]:
                 _df.columns = ['id', 'object_id', 'rainfall', 'slopes', 'soil_type', 'suitability']
@@ -177,6 +166,15 @@ class GeneralServices:
 
             df_train, df_test = minMax(svd(df_train)), minMax(svd(df_test))
 
+            # #####
+            # pd.set_option('display.max_columns', None)
+            # for oid, _0, _1 in zip(
+            #         df_train['object_id'],
+            #         df_train[0],
+            #         df_train[1]):
+            #     print(str(oid) + ',' + str(_0) + ',' + str(_1))
+            # ####
+
             # X & Y Splitting
             x_train, y_train = df_train[features_model], df_train[label]
             x_test, y_test = df_test[features_model], df_test[label]
@@ -186,15 +184,12 @@ class GeneralServices:
             model.fit(x_train, y_train)
             y_pred = model.predict(x_test)
 
-            # Evaluating Model
-            accuracy = accuracy_score(y_test, y_pred)
-
             # Saving / Update predicted test label manually
             for i, row in df_test.iterrows():
                 models.LandData.objects.filter(land_data_id=df_test.iloc[i]['id']). \
-                    update(land_data_suitability=y_pred[i], land_data_accuracy=accuracy)
+                    update(land_data_suitability=y_pred[i])
 
-            return {'accuracy': accuracy, }
+            return True
 
         except Exception as e:
             print('process ERROR', e)
@@ -204,19 +199,18 @@ class GeneralServices:
     @staticmethod
     def lsExportCsv(request, user_fk, data_type):
         try:
-            print(data_type)
             f_name = f"ls_{'model' if data_type == 'train' else 'test'}_data-{datetime.today().strftime('%Y%m%d%H%M%S')}.csv"
             response = HttpResponse(content_type='text/csv',
                                     headers={'Content-Disposition': f'attachment; filename="{f_name}"'})
             writer = csv.writer(response)
-            writer.writerow(['object_id', 'curah_hujan', 'lereng', 'jenis_tanah', 'kesesuaian'])
+            writer.writerow(['no', 'object_id', 'curah_hujan', 'lereng', 'jenis_tanah', 'kesesuaian'])
 
             ls_data = models.LandData.objects.filter(land_data_fk_user_id=user_fk,
                                                      land_data_type=data_type). \
                 values_list('land_data_object_id', 'land_data_rainfall', 'land_data_slopes', 'land_data_soil_type',
                             'land_data_suitability')
             for i, lsd in enumerate(ls_data):
-                writer.writerow([lsd[0], lsd[1], lsd[2], lsd[3], lsd[4].replace('\r', '')])
+                writer.writerow([i, lsd[0], lsd[1], lsd[2], lsd[3], lsd[4].replace('\r', '')])
 
             return response
         except Exception as e:
@@ -397,6 +391,7 @@ class LSDataFormService(forms.LSDataForm):
                 csv_file = request.FILES['csv_file']
                 with_header = True if request.POST['with_header'] == 'on' else False
                 with_number = True if request.POST['with_number'] == 'on' else False
+                print(request.POST['with_number'])
 
                 if not csv_file.name.endswith('.csv'):
                     print('File is not csv type')
@@ -407,6 +402,11 @@ class LSDataFormService(forms.LSDataForm):
                 file_data = csv_file.read().decode("utf-8")
 
                 rows = file_data.split("\n")
+                # default_header = ['no', 'obj_id', 'rf', 'sl', 'st', 'ls']
+                header = rows[0].split(",")
+
+                if len(header) != 6:
+                    raise Exception
 
                 if with_header:
                     rows = rows[1:]
@@ -427,7 +427,7 @@ class LSDataFormService(forms.LSDataForm):
                                     land_data_rainfall=fields[1],
                                     land_data_slopes=fields[2],
                                     land_data_soil_type=fields[3],
-                                    land_data_suitability=None,
+                                    land_data_suitability=fields[4],
                                     land_data_type=request.POST['land_data_type'],
                                     land_data_accuracy=float(0),
                                     land_data_fk_user_id=models.User.objects.get(user_id=user_fk)).save()

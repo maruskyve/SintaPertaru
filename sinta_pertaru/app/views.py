@@ -1,4 +1,5 @@
 from datetime import time, datetime
+from django.db.models import Count
 from django.db.models import Max
 from django.http import HttpRequest, HttpResponse, HttpResponseRedirect
 from django.template import loader
@@ -57,15 +58,16 @@ def view_login(request, login=1, signup=0):  # User Login Page
     template = loader.get_template(login_tmpl_path)
     context = {'request': request}
 
-    # Add success message if signup success
-    if signup == 1:
-        context.update({'rst': 1,
-                        'rmg': 'Selamat, akun anda berhasil dibuat!'})
+    if request.method == "GET":
+        # Add success message if signup success
+        if signup == 1:
+            context.update({'rst': 1,
+                            'rmg': 'Selamat, akun anda berhasil dibuat!'})
 
-    # Add error message if not login
-    if login == 0:
-        context.update({'rst': '0',
-                        'rmg': 'Anda belum masuk, silahkan masuk terlebih dahulu'})
+        # Add error message if not login
+        if login == 0:
+            context.update({'rst': '0',
+                            'rmg': 'Anda belum masuk, silahkan masuk terlebih dahulu'})
 
     if request.method == "POST":
         rp = request.POST
@@ -100,18 +102,15 @@ def view_signup(request):  # New User Signup Page
         if rp['form'] == 'userSignUp':
             # If employee id exists in Employee table (T)
             if models.Employee.objects.filter(employee_id=rp['user_fk_employee_id']).count():
-                print('SIGNUP - nip terdaftar')
 
                 # If employee id exists in User table as fk (F)
                 if models.User.objects.filter(user_fk_employee_id=rp['user_fk_employee_id']).count():
-                    print('SIGNUP - nip memiliki akun')
                     context.update({'rst': '0',
                                     'rmg': 'Gagal, nomor pegawai sudah memiliki akun!'})
 
                 else:
                     # If current user name not exists in User table (T)
                     if models.User.objects.filter(user_name=rp['user_name']).count() == 0:
-                        print('SIGNUP - username tersedia')
 
                         request.POST._mutable = True
                         request.POST['user_id'] = \
@@ -124,11 +123,9 @@ def view_signup(request):  # New User Signup Page
                             return HttpResponseRedirect(reverse('view_login', kwargs={'signup': 1}))
 
                     else:
-                        print('SIGNUP - username tidak tersedia')
                         context.update({'rst': '0',
                                         'rmg': 'Gagal, nama pengguna sudah ada!'})
             else:
-                print('SIGNUP - nip tidak terdaftar')
                 context.update({'rst': '0',
                                 'rmg': 'Gagal, nomor pegawai tidak terdaftar!'})
 
@@ -201,6 +198,16 @@ def view_ls(request):
     test_ulb_data = test_data.filter(land_data_suitability__exact='')
     test_lb_data = test_data.exclude(land_data_suitability__exact='')
 
+    train_labels = train_data.values('land_data_suitability').annotate(Count('land_data_suitability')). \
+        exclude(land_data_suitability__count=1).values('land_data_suitability')
+    train_labels = [_['land_data_suitability'] for _ in train_labels]
+    train_labels_count = [train_data.filter(land_data_suitability=_).count() for _ in train_labels]
+
+    test_labels = test_data.values('land_data_suitability'). \
+        annotate(Count('land_data_suitability')).exclude(land_data_suitability__count=1).values('land_data_suitability')
+    test_labels = [_['land_data_suitability'] for _ in test_labels]
+    test_labels_count = [test_data.filter(land_data_suitability=_).count() for _ in test_labels]
+
     context.update({
         'train_data': train_data,
         'train_data_total': train_data.count(),
@@ -209,7 +216,9 @@ def view_ls(request):
         'train_unlabeled_data': train_ulb_data.count(),
         'train_labeled_data': train_lb_data.count(),
         'test_unlabeled_data': test_ulb_data.count(),
-        'test_labeled_data': test_lb_data.count()
+        'test_labeled_data': test_lb_data.count(),
+        'train_labels': zip(train_labels, train_labels_count),
+        'test_labels': zip(test_labels, test_labels_count)
     })
     return HttpResponse(template.render(context))
 

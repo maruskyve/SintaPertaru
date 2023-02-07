@@ -1449,6 +1449,18 @@
                                                     Fitur Data
                                                     <span class="badge badge-dark badge-pill">3</span>
                                                 </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start iq-bg-success">
+                                                    Label Data
+                                                    <div>
+                                                        {% for label, label_count in train_labels %}
+                                                            <span class="badge badge-dark badge-pill"
+                                                                  data-toggle="tooltip"
+                                                                  data-placement="top"
+                                                                  title="{{ label }}">Label {{ forloop.counter }} ({{ label_count }})</span>
+                                                            <br>
+                                                        {% endfor %}
+                                                    </div>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -1476,6 +1488,18 @@
                                                 <li class="list-group-item d-flex justify-content-between align-items-center iq-bg-success">
                                                     Fitur Data
                                                     <span class="badge badge-dark badge-pill">3</span>
+                                                </li>
+                                                <li class="list-group-item d-flex justify-content-between align-items-start iq-bg-success">
+                                                    Label Data
+                                                    <div>
+                                                        {% for label, label_count in test_labels %}
+                                                            <span class="badge badge-dark badge-pill"
+                                                                  data-toggle="tooltip"
+                                                                  data-placement="top"
+                                                                  title="{{ label }}">Label {{ forloop.counter }} ({{ label_count }})</span>
+                                                            <br>
+                                                        {% endfor %}
+                                                    </div>
                                                 </li>
                                             </ul>
                                         </div>
@@ -1670,7 +1694,8 @@
                                                         <label for="testSuitability"></label>
                                                         <select class="form-control"
                                                                 id="testSuitability"
-                                                                name="land_data_suitability" style="width: fit-content; max-width: 250px; ">
+                                                                name="land_data_suitability"
+                                                                style="width: fit-content; max-width: 250px; ">
                                                             <option value="{{ row.land_data_suitability }}"
                                                                     selected>
                                                                 {{ row.land_data_suitability }}
